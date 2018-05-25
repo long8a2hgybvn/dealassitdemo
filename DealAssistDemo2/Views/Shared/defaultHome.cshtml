@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>defaultHome</title>
+    @Styles.Render("~/Styles/styles.css")
+</head>
+<body>
+    <div class="heading">
+        <div class="headercontent">
+            <div class="headerlogo">
+                <a style="height:10vh" href="https://lazada.vn"><img class="logopicture" src="~/Assets/Picture/LogoOnWeb.png" border="0"></a>
+            </div>
+            <div class="searchbar">
+                <div class="containbox">
+                    <div class="thebox">
+                        <input id="inputstring" type="text" placeholder="Cho chúng tôi biết bạn muốn gì" />
+                    </div>
+                    <div class="search">
+                        <button id="search"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="bookmarks">
+                <a style="height:5vh" href="https://lazada.vn"><img class="bookmarkslogo" src="~/Assets/Picture/Bookmark.png" border="0"></a>
+            </div>
+            <div class="interest">
+                <a style="height:5vh" href="https://lazada.vn"><img class="interestlogo" src="~/Assets/Picture/interest.png" border="0"></a>
+            </div>
+            <div class="uac">
+                <a style="height:7vh" href="https://lazada.vn"><img class="uaclogo" src="~/Assets/Picture/uac.png" border="0"></a>
+            </div>
+        </div>
+    </div>
+    <br style="line-height:3px" />
+    @RenderBody();
+</body>
+</html>

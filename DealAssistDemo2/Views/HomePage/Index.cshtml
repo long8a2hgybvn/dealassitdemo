@@ -1,0 +1,54 @@
+﻿@using DealAssistDemo2.Models;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/defaultHome.cshtml";
+}
+<div class="firstpart">
+    <div class="blankspace1"></div>
+    <div class="catalogborder">
+        <div class="catalog">
+            <a href="https://lazada.vn">Đồ công nghệ và phụ kiện</a><br />
+            <a href="https://lazada.vn">Thiết bị gia dụng & đồ bếp</a><br />
+            <a href="https://lazada.vn">Thời trang</a><br />
+            <a href="https://lazada.vn">Sức khỏe & làm đẹp</a><br />
+            <a href="https://lazada.vn">Hàng tạp hóa</a><br />
+            <a href="https://lazada.vn">Hàng gia dụng & Đời sống</a><br />
+            <a href="https://lazada.vn">Thể thao & Du lịch</a><br />
+            <a href="https://lazada.vn">Phương tiện & Thiết bị định vị</a>
+        </div>
+    </div>
+    <div class="label1">
+        <div class="labelborder">
+            <text class="label1txt">
+                Dựa Trên Mối Quan Tâm Của Bạn*
+            </text>
+        </div>
+        <div class="mainlysuggest">
+            <img style="height:50vh;width:60vw" src="~/Assets/Picture/54790b2c-6b84-4f43-944a-a569ae0d0b90.jpg.w960.jpg" />
+        </div>
+    </div>
+    <div class="blankspace1"></div>
+</div>    
+<br />
+<div class="label2">
+    <text class="label2txt">
+        Sản Phẩm Có Thể Bạn Đang Thích*
+    </text>
+</div>
+<div class="secondpart">
+    <div class="databorder">
+        <ul class="maindataul">
+            @{
+                for (int i = 0; i < ViewBag.sanpham.Count&&i<10; i++)
+                {
+                    <li class="datali">
+                        <div>
+                            <img class="liimg" src="~/Assets/Picture/bee.jpg" />
+                        </div>
+                        @ViewBag.sanpham[i]
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+</div>
