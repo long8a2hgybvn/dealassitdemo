@@ -16,12 +16,8 @@ namespace DealAssistDemo2.Controllers
         public ActionResult Index()
         {
             var data = model.sanpham;
-            for(int i = 0; i < numberofdata; i++)
-            {
-                string sanpham = "Laptop no" + (i + 1).ToString();
-                data.Add(sanpham);
-            }
-            ViewBag.urlimgsanpham = model.urlimage;
+            model.getdata();
+            ViewBag.urlimgage = model.urlimage;
             ViewBag.sanpham = data;
             return View();
         }
