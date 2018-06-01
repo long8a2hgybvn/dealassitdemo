@@ -240,7 +240,7 @@ body {
 .label2 {
     line-height:3vh;
     margin-left:27.5vw;
-    width: 87vw;
+    width: 72.5vw;
 }
 .liimg {
     height: 8vw;
@@ -248,5 +248,7 @@ body {
 }
 .footer {
     background-color: #3498db;
-    
+}
+.footertext {
+    font-size: larger;
 }
