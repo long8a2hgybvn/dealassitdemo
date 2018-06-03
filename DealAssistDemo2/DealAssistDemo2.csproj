@@ -103,6 +103,7 @@
     <Content Include="Assets\Picture\uac.png" />
     <Content Include="Global.asax" />
     <Content Include="Styles\styles.css" />
+    <Content Include="Styles\stylescatalogueview.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +122,7 @@
     <Content Include="Views\Shared\defaultHome.cshtml" />
     <Content Include="Views\HomePage\Index.cshtml" />
     <Content Include="Views\pageStart.cshtml" />
+    <Content Include="Views\HomePage\CatalogueView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

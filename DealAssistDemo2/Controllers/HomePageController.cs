@@ -19,6 +19,12 @@ namespace DealAssistDemo2.Controllers
             model.getdata();
             ViewBag.urlimgage = model.urlimage;
             ViewBag.sanpham = data;
+            ViewBag.style = "~/Styles/styles.css";
+            return View();
+        }
+        public ActionResult CatalogueView()
+        {
+            ViewBag.style = "~/Styles/stylescatalogueview.css";
             return View();
         }
     }
