@@ -250,5 +250,6 @@ body {
     background-color: #3498db;
 }
 .footertext {
-    font-size: larger;
+    line-height:3.5vh;
+    font-size: large;
 }
