@@ -3,8 +3,9 @@
     ViewBag.Title = "CatalogueView";
     Layout = "~/Views/Shared/defaultHome.cshtml";
 }
-<div>
+<div class="navbar">
     @Html.ActionLink("Trang Chủ","Index")
+    <img src="~/Assets/Picture/Bookmark.png" style="height:3.3vh" />
     @{ 
         string pcata = ViewBag.PreCata;
         string pcatatext = ViewBag.PreCataText;

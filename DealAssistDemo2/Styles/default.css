@@ -92,6 +92,7 @@ body {
     background-size: 3vh;
     background-repeat: no-repeat;
     border: 0px;
+    outline: none;
 }
 
 #inputstring:focus {

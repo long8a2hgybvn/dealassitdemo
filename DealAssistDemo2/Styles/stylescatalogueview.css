@@ -1,1 +1,6 @@
-﻿
+﻿.navbar a{
+    font-size:larger;
+}
+.navbar{
+    margin-left:15vw;
+}
