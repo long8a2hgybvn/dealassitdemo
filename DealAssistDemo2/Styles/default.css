@@ -1,0 +1,162 @@
+﻿@font-face {
+    font-family: "Roboto-LightItalic";
+    src: url(Roboto-LightItalic.ttf);
+    src: local("Roboto-LightItalic"), url(Roboto-LightItalic.ttf), format('truetype');
+}
+
+body {
+    background-color: #ecf0f1;
+    margin: 0px 0px 0px 0px;
+}
+
+.heading {
+    display: flex;
+    width: 100vw;
+    height: 12vh;
+    background-color: #3498db;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    justify-content: center;
+}
+
+.logopicture {
+    height: 10vh;
+}
+
+.headerlogo {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    padding-right: 2vw;
+}
+
+.headercontent {
+    height: 12vh;
+    width: 70vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.thebox {
+    position: absolute;
+    height: 4.5vh;
+    width: 31vw;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+    border-width: 3px;
+    border-color: #3498db;
+}
+
+#inputstring {
+    height: 100%;
+    padding-left: 5px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    border: 0px;
+    width: 100%;
+    height: 4.3vh;
+    font-size: large;
+    font-style: italic;
+    font-family: Roboto-LightItalic;
+}
+
+.search {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 4.5vh;
+    width: 4.5vh;
+    z-index: 100;
+    border-width: 3px;
+    border-color: #3498db;
+}
+
+    .search:active, #search:active {
+        border: 0px;
+        outline: none;
+    }
+
+    .search:hover, #search:hover {
+        cursor: grab;
+    }
+
+#search {
+    height: 4.5vh;
+    width: 4.5vh;
+    background-color: lightskyblue;
+    background-image: url(search.png);
+    background-position: center;
+    background-size: 3vh;
+    background-repeat: no-repeat;
+    border: 0px;
+}
+
+#inputstring:focus {
+    border: 0px;
+    outline: none;
+}
+
+.containbox {
+    display: inline-block;
+    position: relative;
+    height: 4.5vh;
+    width: 31vw;
+    text-wrap: none;
+}
+
+.searchbar {
+    display: inline-block;
+    position: relative;
+    padding-left: 4vw;
+    padding-right: 6vw;
+    height: 4.5vh;
+    width: 31vw;
+    text-wrap: none;
+}
+
+.bookmark {
+    display: flex;
+    height: 4vh;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    text-align: center;
+}
+
+.bookmarkslogo {
+    height: 4vh;
+}
+
+.interest {
+    display: flex;
+    height: 4vh;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    text-align: center;
+}
+
+.interestlogo {
+    height: 4vh;
+}
+
+.uac {
+    display: flex;
+    height: 7vh;
+    padding-left: 5vw;
+    text-align: center;
+}
+
+.uaclogo {
+    height: 7vh;
+}
+
+.footer {
+    background-color: #3498db;
+}
+
+.footertext {
+    line-height: 3.5vh;
+    font-size: large;
+}

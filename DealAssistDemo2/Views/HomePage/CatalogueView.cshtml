@@ -1,7 +1,13 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "CatalogueView";
     Layout = "~/Views/Shared/defaultHome.cshtml";
 }
-<div class="titlebar">
-
+<div>
+    @Html.ActionLink("Trang Chủ","Index")
+    @{ 
+        string pcata = ViewBag.PreCata;
+        string pcatatext = ViewBag.PreCataText;
+        @Html.ActionLink(pcatatext, pcata);
+    }
 </div>

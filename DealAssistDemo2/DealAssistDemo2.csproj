@@ -99,6 +99,7 @@
     <Content Include="Assets\Picture\interest.png" />
     <Content Include="Assets\Picture\League of Legends %28TM%29 Client 5_13_2018 4_46_10 AM.png" />
     <Content Include="Assets\Picture\LogoOnWeb.png" />
+    <Content Include="Styles\default.css" />
     <Content Include="Styles\search.png" />
     <Content Include="Assets\Picture\uac.png" />
     <Content Include="Global.asax" />
@@ -112,6 +113,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CatalogueView.cs" />
     <Compile Include="Models\ListHome.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

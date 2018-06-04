@@ -27,5 +27,12 @@ namespace DealAssistDemo2.Controllers
             ViewBag.style = "~/Styles/stylescatalogueview.css";
             return View();
         }
+        public ActionResult cataTech()
+        {
+            ViewBag.PreCata = "techstuff";
+            ViewBag.PreCataText = "Đồ công nghệ và phụ kiện";
+            ViewBag.style = "~/Styles/stylescatalogueview.css";
+            return View("CatalogueView");
+        }
     }
 }
