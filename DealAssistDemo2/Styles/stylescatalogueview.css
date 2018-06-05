@@ -1,6 +1,27 @@
-﻿.navbar a{
-    font-size:larger;
+﻿.navbar a {
+    text-decoration: none;
+    font-size: larger;
+    color: #636e72;
 }
 .navbar{
+    margin-top:2vh;
     margin-left:15vw;
+    margin-bottom:2vh;
+}
+.imgca{
+    height:10vh;
+    width:10vh;
+}
+.boxes{
+    width:100vw;
+    min-height: 15vh;
+    text-align:center;
+}
+.datacontainer{
+    text-align:center;
+    display: inline-block;
+    border: 3px solid black;
+    height: 14vh;
+    width:14vh;
+    margin: 2vh 2vh 2vh 2vh;
 }

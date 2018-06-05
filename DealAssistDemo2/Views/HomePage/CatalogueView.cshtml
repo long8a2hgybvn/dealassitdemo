@@ -1,14 +1,33 @@
-﻿
+﻿@using DealAssistDemo2.Models
 @{
     ViewBag.Title = "CatalogueView";
     Layout = "~/Views/Shared/defaultHome.cshtml";
 }
 <div class="navbar">
     @Html.ActionLink("Trang Chủ","Index")
-    <img src="~/Assets/Picture/Bookmark.png" style="height:3.3vh" />
-    @{ 
+    <img src="~/Assets/Picture/Bookmark.png" style="height:3.3vh; margin-left:1.2vw;margin-right:1.2vw" />
+    @{
         string pcata = ViewBag.PreCata;
         string pcatatext = ViewBag.PreCataText;
         @Html.ActionLink(pcatatext, pcata);
+    }
+</div>
+<div class="boxes">
+    @{
+        var list = new CatalogueView().docongnghe;
+        for (int i = 0; i < list.Count; i++)
+        {
+            if (i == 5)
+            {
+                <br />
+            }
+            else
+            {
+                <div class="datacontainer">
+                    <img class="imgca" /><br/>
+                    <text class="titleca">@list[i]</text>
+                </div>
+            }
+        }
     }
 </div>
