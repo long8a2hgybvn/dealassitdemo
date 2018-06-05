@@ -22,5 +22,20 @@ namespace DealAssistDemo2.Models
             "Thiết bị đeo",
             "Thiết bị lưu trữ"
         };
+        public List<string> techstuffimg = new List<string>()
+        {
+            "Assets/Picture/techstuff/dt.jpg",
+            "Assets/Picture/techstuff/ipad.jpg",
+            "Assets/Picture/techstuff/laptop.jpg",
+            "Assets/Picture/techstuff/case.jpg",
+            "Assets/Picture/techstuff/tainghe.jpg",
+            "Assets/Picture/techstuff/game.jpg",
+            "Assets/Picture/techstuff/mayanh.jpg",
+            "Assets/Picture/techstuff/acdt.jpg",
+            "Assets/Picture/techstuff/aclaptop.jpg",
+            "Assets/Picture/techstuff/wifi.jpg",
+            "Assets/Picture/techstuff/watch.jpg",
+            "Assets/Picture/techstuff/luutru.jpg"
+        };
     }
 }

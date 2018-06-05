@@ -21,34 +21,39 @@
         }
     }
 </div>
-<div class="boxes">
-    @{
-        List<string> list = new List<string>();
-        string getcatalogue = ViewBag.PreCata;
-        switch (getcatalogue)
-        {
-
-            case "techstuff":
-                list = new CatalogueView().techstuff;
-                break;
-
-        }
-        for (int i = 0; i < list.Count; i++)
-        {
-            if (i == 6)
+<div style="text-align:center">
+    <div class="boxes">
+        @{
+            List<string> list = new List<string>();
+            List<string> listimg = new List<string>();
+            string getcatalogue = ViewBag.PreCata;
+            switch (getcatalogue)
             {
-                <br />
+
+                case "techstuff":
+                    list = new CatalogueView().techstuff;
+                    listimg = new CatalogueView().techstuffimg;
+                    break;
+
             }
-            else
+            for (int i = 0; i < list.Count; i++)
             {
-                <div class="datacontainer">
-                    <img class="imgca" /><br />
-                    <text class="titleca">@list[i]</text>
-                </div>
+                if (i == 6)
+                {
+                    <br />
+                }
+                else
+                {
+                    <div class="datacontainer">
+                        <img class="imgca" src="~/@listimg[i]" /><br />
+                        <text class="titleca">@list[i]</text>
+                    </div>
+                }
             }
         }
-    }
+    </div>
 </div>
+
 <div>
 
 </div>

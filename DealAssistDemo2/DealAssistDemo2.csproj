@@ -96,23 +96,47 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Picture\techstuff\case.jpg" />
+    <Content Include="Assets\Picture\techstuff\case.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Picture\bee.jpg" />
     <Content Include="Assets\Picture\54790b2c-6b84-4f43-944a-a569ae0d0b90.jpg.w960.jpg" />
     <Content Include="Assets\Picture\Bookmark.png" />
-    <Content Include="Assets\Picture\techstuff\aclaptop.jpg" />
-    <Content Include="Assets\Picture\techstuff\acdt.jpg" />
-    <Content Include="Assets\Picture\techstuff\ipad.jpg" />
-    <Content Include="Assets\Picture\techstuff\mayanh.jpg" />
-    <Content Include="Assets\Picture\techstuff\images.jpg" />
+    <Content Include="Assets\Picture\techstuff\aclaptop.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Picture\techstuff\acdt.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Picture\techstuff\ipad.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Picture\techstuff\mayanh.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Picture\techstuff\laptop.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Picture\interest.png" />
     <Content Include="Assets\Picture\LogoOnWeb.png" />
-    <Content Include="Assets\Picture\techstuff\wifi.jpg" />
-    <Content Include="Assets\Picture\techstuff\game.jpg" />
-    <Content Include="Assets\Picture\techstuff\tainghe.jpg" />
-    <Content Include="Assets\Picture\techstuff\.jpg" />
-    <Content Include="Assets\Picture\techstuff\watch.jpg" />
-    <Content Include="Assets\Picture\techstuff\luutru.jpg" />
+    <Content Include="Assets\Picture\techstuff\wifi.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Picture\techstuff\game.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Picture\techstuff\tainghe.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Picture\techstuff\dt.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Picture\techstuff\watch.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Picture\techstuff\luutru.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Styles\default.css" />
     <Content Include="Styles\search.png" />
     <Content Include="Assets\Picture\uac.png" />

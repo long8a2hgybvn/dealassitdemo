@@ -12,15 +12,18 @@
     height:13vh;
     width:16vh;
 }
-.boxes{
-    width:100vw;
+.boxes {
+    display: inline-block;
+    width: 80vw;
     min-height: 15vh;
-    text-align:center;
+    text-align: center;
+    margin-top: 4vh;
+    background-color: white;
 }
 .datacontainer {
     text-align: center;
     display: inline-block;
-    border: 1.5px solid #b2bec3;
+    border: 1px solid #b2bec3;
     height: 16vh;
     width: 17vh;
     margin: 2vh 3vh 2vh 3vh;
