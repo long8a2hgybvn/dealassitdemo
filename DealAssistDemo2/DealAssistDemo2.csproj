@@ -96,15 +96,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Picture\techstuff\case.jpg" />
     <Content Include="Assets\Picture\bee.jpg" />
     <Content Include="Assets\Picture\54790b2c-6b84-4f43-944a-a569ae0d0b90.jpg.w960.jpg" />
     <Content Include="Assets\Picture\Bookmark.png" />
-    <Content Include="Assets\Picture\download.jpg" />
-    <Content Include="Assets\Picture\images.jpg" />
+    <Content Include="Assets\Picture\techstuff\aclaptop.jpg" />
+    <Content Include="Assets\Picture\techstuff\acdt.jpg" />
+    <Content Include="Assets\Picture\techstuff\ipad.jpg" />
+    <Content Include="Assets\Picture\techstuff\mayanh.jpg" />
+    <Content Include="Assets\Picture\techstuff\images.jpg" />
     <Content Include="Assets\Picture\interest.png" />
-    <Content Include="Assets\Picture\League of Legends %28TM%29 Client 5_13_2018 4_46_10 AM.png" />
     <Content Include="Assets\Picture\LogoOnWeb.png" />
-    <Content Include="Assets\Picture\smartphone-vo-kim-loai %281%29.jpg" />
+    <Content Include="Assets\Picture\techstuff\wifi.jpg" />
+    <Content Include="Assets\Picture\techstuff\game.jpg" />
+    <Content Include="Assets\Picture\techstuff\tainghe.jpg" />
+    <Content Include="Assets\Picture\techstuff\.jpg" />
+    <Content Include="Assets\Picture\techstuff\watch.jpg" />
+    <Content Include="Assets\Picture\techstuff\luutru.jpg" />
     <Content Include="Styles\default.css" />
     <Content Include="Styles\search.png" />
     <Content Include="Assets\Picture\uac.png" />
