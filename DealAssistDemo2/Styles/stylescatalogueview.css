@@ -9,19 +9,26 @@
     margin-bottom:2vh;
 }
 .imgca{
-    height:10vh;
-    width:10vh;
+    height:13vh;
+    width:16vh;
 }
 .boxes{
     width:100vw;
     min-height: 15vh;
     text-align:center;
 }
-.datacontainer{
-    text-align:center;
+.datacontainer {
+    text-align: center;
     display: inline-block;
-    border: 3px solid black;
-    height: 14vh;
-    width:14vh;
-    margin: 2vh 2vh 2vh 2vh;
+    border: 1.5px solid #b2bec3;
+    height: 16vh;
+    width: 17vh;
+    margin: 2vh 3vh 2vh 3vh;
+    padding-top: 1vh;
+}
+.footer {
+    bottom: 0;
+    position: fixed;
+    width: 100vw;
+    background-color: #3498db;
 }

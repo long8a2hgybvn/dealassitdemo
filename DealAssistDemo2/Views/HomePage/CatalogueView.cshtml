@@ -4,30 +4,51 @@
     Layout = "~/Views/Shared/defaultHome.cshtml";
 }
 <div class="navbar">
-    @Html.ActionLink("Trang Chủ","Index")
+    @Html.ActionLink("Trang Chủ", "Index")
     <img src="~/Assets/Picture/Bookmark.png" style="height:3.3vh; margin-left:1.2vw;margin-right:1.2vw" />
     @{
         string pcata = ViewBag.PreCata;
         string pcatatext = ViewBag.PreCataText;
-        @Html.ActionLink(pcatatext, pcata);
+        if (pcata == null || pcatatext == null)
+        {
+            @Html.ActionLink("Đồ công nghệ và phụ kiện", "techstuff");
+            ViewBag.PreCata = "techstuff";
+            ViewBag.PreCataText = "Đồ công nghệ và phụ kiện";
+        }
+        else
+        {
+            @Html.ActionLink(pcatatext, pcata);
+        }
     }
 </div>
 <div class="boxes">
     @{
-        var list = new CatalogueView().docongnghe;
+        List<string> list = new List<string>();
+        string getcatalogue = ViewBag.PreCata;
+        switch (getcatalogue)
+        {
+
+            case "techstuff":
+                list = new CatalogueView().techstuff;
+                break;
+
+        }
         for (int i = 0; i < list.Count; i++)
         {
-            if (i == 5)
+            if (i == 6)
             {
                 <br />
             }
             else
             {
                 <div class="datacontainer">
-                    <img class="imgca" /><br/>
+                    <img class="imgca" /><br />
                     <text class="titleca">@list[i]</text>
                 </div>
             }
         }
     }
+</div>
+<div>
+
 </div>

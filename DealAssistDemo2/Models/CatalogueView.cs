@@ -7,7 +7,7 @@ namespace DealAssistDemo2.Models
 {
     public class CatalogueView
     {
-        public List<string> docongnghe = new List<string>()
+        public List<string> techstuff = new List<string>()
         {
             "Điện thoại di động",
             "Máy tính bảng",
