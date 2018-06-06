@@ -37,5 +37,48 @@ namespace DealAssistDemo2.Models
             "Assets/Picture/techstuff/watch.jpg",
             "Assets/Picture/techstuff/luutru.jpg"
         };
+        public List<string> household = new List<string>()
+        {
+            "Thiết bị TV & Video",
+            "Dàn âm thanh gia đình",
+            "Điện gia dụng gia đình",
+            "Điều hòa & lọc khí",
+            "Máy hút bụi & vệ sinh sàn",
+            "Thiết bị chắm sóc cá nhân",
+            "Ngoại thất"
+        };
+        public List<string> householdimg = new List<string>()
+        {
+            "Assets/Picture/household/1.jpg",
+            "Assets/Picture/household/2.jpg",
+            "Assets/Picture/household/3.jpg",
+            "Assets/Picture/household/4.jpg",
+            "Assets/Picture/household/5.jpg",
+            "Assets/Picture/household/6.jpg",
+            "Assets/Picture/household/7.jpg",
+        };
+        public List<string> fashion = new List<string>()
+        {
+            "Trang phục nam",
+            "Trang phục nữ",
+            "Giày nam",
+            "Giày nữ",
+            "Đồ lót nam",
+            "Đồ lót nữ",
+            "Túi xách",
+            "Đồng hồ",
+            "Phụ kiện nữ",
+            "Phụ kiện nam"
+        };
+        public List<string> fashionimg = new List<string>()
+        {
+            ""
+        };
+        public List<string> healthcare = new List<string>()
+        {
+            "Đồ dùng làm đẹp",
+            "Thiết bị y tế"
+        };
+
     }
 }

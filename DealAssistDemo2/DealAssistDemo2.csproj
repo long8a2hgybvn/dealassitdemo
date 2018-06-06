@@ -96,6 +96,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Picture\household\6.jpg" />
+    <Content Include="Assets\Picture\household\3.jpg" />
+    <Content Include="Assets\Picture\household\4.jpg" />
+    <Content Include="Assets\Picture\household\2.jpg" />
+    <Content Include="Assets\Picture\household\7.jpg" />
+    <Content Include="Assets\Picture\household\1.jpg" />
+    <Content Include="Assets\Picture\household\5.jpg" />
     <Content Include="Assets\Picture\techstuff\case.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
