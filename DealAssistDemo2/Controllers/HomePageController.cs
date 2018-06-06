@@ -34,5 +34,40 @@ namespace DealAssistDemo2.Controllers
             ViewBag.style = "~/Styles/stylescatalogueview.css";
             return View("CatalogueView");
         }
+        public ActionResult cataTV()
+        {
+            ViewBag.PreCata = "household";
+            ViewBag.PreCataText = "Thiết bị gia dụng & đồ bếp";
+            ViewBag.style = "~/Styles/stylescatalogueview.css";
+            return View("CatalogueView");
+        }
+        public ActionResult cataFashion()
+        {
+            ViewBag.PreCata = "fashion";
+            ViewBag.PreCataText = "Thời trang";
+            ViewBag.style = "~/Styles/stylescatalogueview.css";
+            return View("CatalogueView");
+        }
+        public ActionResult cataHealth()
+        {
+            ViewBag.PreCata = "healthcare";
+            ViewBag.PreCataText = "Sức khỏe & làm đẹp";
+            ViewBag.style = "~/Styles/stylescatalogueview.css";
+            return View("CatalogueView");
+        }
+        public ActionResult cataGro()
+        {
+            ViewBag.PreCata = "grocery";
+            ViewBag.PreCataText = "Hàng tạp hóa";
+            ViewBag.style = "~/Styles/stylescatalogueview.css";
+            return View("CatalogueView");
+        }
+        public ActionResult cataTrans()
+        {
+            ViewBag.PreCata = "cataTrans";
+            ViewBag.PreCataText = "Phương tiện & Thiết bị định vị";
+            ViewBag.style = "~/Styles/stylescatalogueview.css";
+            return View("CatalogueView");
+        }
     }
 }

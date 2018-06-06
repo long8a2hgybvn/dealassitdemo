@@ -96,6 +96,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Picture\fashion\5.png" />
+    <Content Include="Assets\Picture\fashion\6.jpg" />
+    <Content Include="Assets\Picture\fashion\8.jpg" />
+    <Content Include="Assets\Picture\fashion\4.jpg" />
+    <Content Include="Assets\Picture\fashion\3.jpg" />
+    <Content Include="Assets\Picture\fashion\10.jpg" />
+    <Content Include="Assets\Picture\fashion\9.jpg" />
+    <Content Include="Assets\Picture\fashion\1.jpg" />
+    <Content Include="Assets\Picture\fashion\2.jpg" />
+    <Content Include="Assets\Picture\fashion\7.jpg" />
+    <Content Include="Assets\Picture\grocery\1.jpg" />
+    <Content Include="Assets\Picture\grocery\2.jpg" />
+    <Content Include="Assets\Picture\grocery\3.jpg" />
+    <Content Include="Assets\Picture\grocery\4.png" />
+    <Content Include="Assets\Picture\grocery\5.jpg" />
+    <Content Include="Assets\Picture\healthcare\1.jpg" />
+    <Content Include="Assets\Picture\healthcare\2.jpg" />
+    <Content Include="Assets\Picture\healthcare\3.jpg" />
     <Content Include="Assets\Picture\household\6.jpg" />
     <Content Include="Assets\Picture\household\3.jpg" />
     <Content Include="Assets\Picture\household\4.jpg" />
@@ -103,6 +121,7 @@
     <Content Include="Assets\Picture\household\7.jpg" />
     <Content Include="Assets\Picture\household\1.jpg" />
     <Content Include="Assets\Picture\household\5.jpg" />
+    <Content Include="Assets\Picture\household\8.jpg" />
     <Content Include="Assets\Picture\techstuff\case.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -144,6 +163,11 @@
     <Content Include="Assets\Picture\techstuff\luutru.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Picture\trans\1.jpg" />
+    <Content Include="Assets\Picture\trans\2.jpg" />
+    <Content Include="Assets\Picture\trans\3.jpg" />
+    <Content Include="Assets\Picture\trans\4.jpg" />
+    <Content Include="Assets\Picture\trans\5.jpg" />
     <Content Include="Styles\default.css" />
     <Content Include="Styles\search.png" />
     <Content Include="Assets\Picture\uac.png" />

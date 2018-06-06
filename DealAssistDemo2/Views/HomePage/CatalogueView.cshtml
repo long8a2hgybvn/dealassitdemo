@@ -34,6 +34,26 @@
                     list = new CatalogueView().techstuff;
                     listimg = new CatalogueView().techstuffimg;
                     break;
+                case "household":
+                    list = new CatalogueView().household;
+                    listimg = new CatalogueView().householdimg;
+                    break;
+                case "fashion":
+                    list = new CatalogueView().fashion;
+                    listimg = new CatalogueView().fashionimg;
+                    break;
+                case "healthcare":
+                    list = new CatalogueView().healthcare;
+                    listimg = new CatalogueView().healthcareimg;
+                    break;
+                case "grocery":
+                    list = new CatalogueView().grocery;
+                    listimg = new CatalogueView().groceryimg;
+                    break;
+                case "cataTrans":
+                    list = new CatalogueView().transport;
+                    listimg = new CatalogueView().transportimg;
+                    break;
             }
             for (int i = 0; i < list.Count; i++)
             {
@@ -44,8 +64,10 @@
                 else
                 {
                     <div class="datacontainer">
-                        <img class="imgca" src="~/@listimg[i]" /><br />
-                        <text class="titleca">@list[i]</text>
+                        <a href="">
+                            <img class="imgca" src="~/@listimg[i]" /><br />
+                            <text class="titleca">@list[i]</text>
+                        </a>
                     </div>
                 }
             }
