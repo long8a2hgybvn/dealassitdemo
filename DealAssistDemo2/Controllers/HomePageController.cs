@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -69,5 +70,6 @@ namespace DealAssistDemo2.Controllers
             ViewBag.style = "~/Styles/stylescatalogueview.css";
             return View("CatalogueView");
         }
+        
     }
 }
