@@ -1,0 +1,49 @@
+﻿@using DealAssistDemo2.Models
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Signup</title>
+    @Styles.Render("~/Styles/signup.css")
+</head>
+<body>
+    <h1>Welcome to DealAssist</h1>
+    <h4>Here you teach us how to satisfy you</h4>
+    <img src="~/Assets/Picture/LogoOnWeb.png" style="height:15vh" />
+    <div class="input">
+        @model DealAssistDemo2.Models.signup
+        @using (Html.BeginForm("signupsubmit", "HomePage", FormMethod.Post))
+        {
+
+            @Html.Label("Tên đầy đủ")<br />
+            @Html.TextBoxFor(model => model.name)<br />
+            @Html.Label("Tên đăng nhập")<br />
+            @Html.TextBoxFor(model => model.id)<br />
+            @Html.Label("Mật khẩu")<br />
+            @Html.PasswordFor(model => model.pass)<br />
+            @Html.Label("Nhập lại mật khẩu một lần nữa")<br />
+            @Html.PasswordFor(model => model.checkpass)<br />
+            @Html.Label("Địa chỉ Email")<br />
+            @Html.TextBoxFor(model => model.email)<br />
+            @Html.Label("Giới tính")<br />
+            @Html.RadioButtonFor(model => model.gender, "1")
+            @Html.Label("Nam")<br />
+            @Html.RadioButtonFor(model => model.gender, "2")
+            @Html.Label("Nữ")<br />
+            @Html.RadioButtonFor(model => model.gender, "3")
+            @Html.Label("Khác")<br />
+            if (null != TempData["alertMessage"])
+            {
+                @Html.Raw(TempData["alertMessage"])
+            }
+            <br/><input type="submit" value="Sign up for free" class="signup" onclick="parent.location='@Url.Action("signupsubmit","HomePage")'" />
+        }
+    </div>
+   
+</body>
+</html>

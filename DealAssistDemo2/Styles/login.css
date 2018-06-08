@@ -1,0 +1,58 @@
+﻿@font-face {
+    font-family: "Roboto-LightItalic";
+    src: url(Roboto-LightItalic.ttf);
+    src: local("Roboto-LightItalic"), url(Roboto-LightItalic.ttf), format('truetype');
+}
+body {
+    font-family: Roboto;
+    height: 100vh;
+    width: 100vw;
+    text-align: center;
+}
+.content {
+    width: 100%;
+    height: 50vh;
+}
+input{
+    display:block;
+    margin:0 auto;
+    padding:0;
+    
+}
+.line {
+    height: 30vh;
+    width: 2px;
+    display: inline-block;
+    background-color: #3498db;
+    vertical-align:middle;
+    margin: auto 0;
+}
+.lgin {
+    height: 18vh;
+    width: 40vw;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    margin: auto 0;
+}
+.sgnup {
+    vertical-align: middle;
+    display: inline-block;
+    height: 8vh;
+    width: 40vw;
+    margin: auto 0;
+}
+.textbox{
+    display:block;
+    font-size:2vh;
+    height:4.5vh;
+    width:25vw;
+}
+.button {
+    width:10vw;
+    height:8vh;
+    background-color: #3498db;
+    color: white;
+    outline:none;
+    border:none;
+}

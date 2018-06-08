@@ -1,0 +1,41 @@
+﻿@font-face {
+    font-family: "Roboto-LightItalic";
+    src: url(Roboto-LightItalic.ttf);
+    src: local("Roboto-LightItalic"), url(Roboto-LightItalic.ttf), format('truetype');
+}
+
+body {
+    font-family: Roboto;
+    height: 100vh;
+    width: 100vw;
+    text-align: center;
+}
+.input{
+    text-align:left;
+    width:20vw;
+    height:50vh;
+    display: block;
+    margin: 0 auto;
+}
+label{
+    line-height:3vh;
+    font-size:1.5vh;
+}
+input[type=text], input[type=password]{
+    font-size:2vh;
+    height:3vh;
+    width: 20vw;
+}
+input[type=radio]{
+    height: 2vh;
+    width: 2vh;
+    font-size: 1.5vh;
+}
+input[type=submit] {
+    width: 10vw;
+    height: 8vh;
+    background-color: #3498db;
+    color: white;
+    outline: none;
+    border: none;
+}

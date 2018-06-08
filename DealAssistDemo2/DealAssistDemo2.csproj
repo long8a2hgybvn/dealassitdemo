@@ -169,9 +169,11 @@
     <Content Include="Assets\Picture\trans\4.jpg" />
     <Content Include="Assets\Picture\trans\5.jpg" />
     <Content Include="Styles\default.css" />
+    <Content Include="Styles\login.css" />
     <Content Include="Styles\search.png" />
     <Content Include="Assets\Picture\uac.png" />
     <Content Include="Global.asax" />
+    <Content Include="Styles\signup.css" />
     <Content Include="Styles\styles.css" />
     <Content Include="Styles\stylescatalogueview.css" />
     <Content Include="Web.config">
@@ -186,6 +188,8 @@
     </Compile>
     <Compile Include="Models\CatalogueView.cs" />
     <Compile Include="Models\ListHome.cs" />
+    <Compile Include="Models\loginhandle.cs" />
+    <Compile Include="Models\signup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -200,6 +204,8 @@
     <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
+    <Content Include="Views\HomePage\userlogin.cshtml" />
+    <Content Include="Views\HomePage\Signup.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -37,7 +37,7 @@
     <div class="databorder">
         <ul class="maindataul">
             @{
-                for (int i=0; i < ViewBag.sanpham.Count &&i<10; i++)
+                for (int i = 0; i < ViewBag.sanpham.Count && i < 10; i++)
                 {
                     <li class="datali">
                         <div>
@@ -47,7 +47,8 @@
                     </li>
                 }
             }
-            @{ 
+
+            @{
                 ListHome model = new ListHome();
                 model.getsql();
                 ViewBag.error = model.error;

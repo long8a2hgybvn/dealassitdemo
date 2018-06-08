@@ -12,7 +12,7 @@
 }
 
 .label1txt {
-    font-size: 18px;
+    font-size: 1.7vh;
     font-family: Roboto;
     left:5vw;
     padding-left: 5px;
@@ -34,7 +34,7 @@
 }
 .catalog > a {
     text-decoration: none;
-    font-size: 18px;
+    font-size: 1.7vh;
     font-family: Roboto;
     color: #ffffff;
     padding-left: 1.5vw;
@@ -76,7 +76,7 @@
     text-align:center
 }
 .label2txt {
-    font-size: 18px;
+    font-size: 1.7vh;
     font-family: Roboto;
     left: 5vw;
     display: inline-block;
@@ -96,5 +96,5 @@
 }
 .footertext {
     line-height:3.5vh;
-    font-size: large;
+    font-size: 1.7vh;
 }

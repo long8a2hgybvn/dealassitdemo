@@ -1,6 +1,7 @@
 ﻿using DealAssistDemo2.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -17,10 +18,24 @@ namespace DealAssistDemo2.Controllers
         public ActionResult Index()
         {
             var data = model.sanpham;
-            model.getdata();
             ViewBag.urlimgage = model.urlimage;
             ViewBag.sanpham = data;
             ViewBag.style = "~/Styles/styles.css";
+            return View();
+        }
+        [HttpPost]
+        public ActionResult userlogin(loginhandle model)
+        {
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = @" Data Source= 103.27.60.66; Initial Catalog= dealassi_dealassist; User ID = dealassist; Password = 12345";
+            conn.Open();
+            string checkusercmd = "SELECT * FROM BangNgDung WHERE 'ID' ='" + model.id + "'";
+            SqlCommand checkuser = new SqlCommand(checkusercmd, conn);
+            var checkuserread = checkuser.ExecuteScalar();
+            if (checkuserread != null)
+            {
+                TempData["alertMessage"] = "Tên đăng nhập đã tồn tại";
+            }
             return View();
         }
         public ActionResult CatalogueView()
@@ -70,6 +85,54 @@ namespace DealAssistDemo2.Controllers
             ViewBag.style = "~/Styles/stylescatalogueview.css";
             return View("CatalogueView");
         }
-        
+        public ActionResult Login()
+        {
+            var loginmodel = new loginhandle();
+            /* code SQL */
+            /* code SQL */
+            /* code SQL */
+            /* code SQL */
+            /* code SQL */
+            /* code SQL */
+            return View("userlogin");
+        }
+        public ActionResult Signup()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult signupsubmit(signup model)
+        {
+            ViewBag.error = null;
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = @" Data Source= 103.27.60.66; Initial Catalog= dealassi_dealassist; User ID = dealassist; Password = 12345";
+            conn.Open();
+            if (model.checkpass == null || model.email ==null || model.gender == null || model.id == null|| model.name ==null || model.pass == null )
+            {
+                TempData["alertMessage"] = "Vui lòng điền đầy đủ các trường";
+                return View("Signup");
+            }
+            if(model.checkpass != model.pass)
+            {
+                TempData["alertMessage"] = "Nhập lại mật khẩu không khớp";
+                return View("Signup");
+            }
+            if(model.pass.Length < 4 || model.pass.Length > 20)
+            {
+                TempData["alertMessage"] = "Password yêu cầu có độ dài lớn hơn 4 và nhỏ hơn 20";
+                return View("Signup");
+            }
+            string checkusercmd = "SELECT * FROM BangNgDung WHERE 'ID' ='" + model.id + "'";
+            SqlCommand checkuser = new SqlCommand(checkusercmd,conn);
+            var checkuserread = checkuser.ExecuteScalar();
+            if (checkuserread != null)
+            {
+                TempData["alertMessage"] = "Tên đăng nhập đã tồn tại";
+            }
+            SqlCommand adduser = new SqlCommand("INSERT INTO BangNgDung Values ('" + model.id + "','" + model.pass + "',N'" + model.name + "','" + model.email + "',N'" + model.gender + "')", conn);
+            // ID -> Pass -> Fullname -> Email -> Gender
+            adduser.ExecuteNonQuery();
+            return View("Signup");
+        }
     }
 }

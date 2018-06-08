@@ -1,0 +1,38 @@
+﻿@using DealAssistDemo2.Models
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Welcome to DealAssist</title>
+    @Styles.Render("~/Styles/login.css")
+</head>
+<body>
+    <h1>Welcome to DealAssist</h1>
+    <h5>Here you teach us how to satisfy you</h5>
+    <img src="~/Assets/Picture/LogoOnWeb.png" style="height:15vh" />
+    <div class="content">
+        <div class="lgin">
+            @model loginhandle
+
+            @using (Html.BeginForm("userlogin", "HomePage", FormMethod.Post))
+            {
+                @Html.TextBoxFor(model => model.user, new { @placeholder = "User name or Email", @class = "textbox" })
+                <br style="line-height:0.5vh" />
+                @Html.PasswordFor(model => model.pass, new { @placeholder = "Password", @class = "textbox" })
+                <br style="line-height:0.5vh" />
+                <input class="button" value="Login" type="submit" onclick="parent.location='@Url.Action("Login", "HomePage")'" />
+            }
+            </div>
+        <div class="line"></div>
+        <div class="sgnup">
+            <input class="button" value="Sign up now for free" type="submit" onclick="parent.location='@Url.Action("Signup","HomePage")'" />
+        </div>
+    </div>
+</body>
+</html>
+    
