@@ -59,7 +59,8 @@ namespace DealAssistDemo2.Models
             "Assets/Picture/household/5.jpg",
             "Assets/Picture/household/6.jpg",
             "Assets/Picture/household/7.jpg",
-            "Assets/Picture/household/8.jpg"
+            "Assets/Picture/household/8.jpg",
+            "Assets/Picture/household/9.jpg"
         };
         public List<string> fashion = new List<string>()
         {

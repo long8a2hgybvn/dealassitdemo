@@ -13,8 +13,15 @@ namespace DealAssistDemo2.Controllers
     {
         public ListHome model = new ListHome();
         public int numberofdata = 5;
-        /* get number of packages from SQL */
-        // GET: HomePage
+        // Trusted Login
+        //
+        //
+        public ActionResult TrustedIndex()
+        {
+            ViewBag.style = "~/Styles/styles.css";
+            return View("Index");
+        }
+        // End Trusted Login
         public ActionResult Index()
         {
             var data = model.sanpham;
@@ -29,14 +36,20 @@ namespace DealAssistDemo2.Controllers
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = @" Data Source= 103.27.60.66; Initial Catalog= dealassi_dealassist; User ID = dealassist; Password = 12345";
             conn.Open();
-            string checkusercmd = "SELECT * FROM BangNgDung WHERE 'ID' ='" + model.id + "'";
+            string checkusercmd = "SELECT Pass FROM BangNgDung WHERE ID ='" + model.user + "'";
             SqlCommand checkuser = new SqlCommand(checkusercmd, conn);
             var checkuserread = checkuser.ExecuteScalar();
-            if (checkuserread != null)
+            if(model.pass == checkuserread.ToString())
             {
-                TempData["alertMessage"] = "Tên đăng nhập đã tồn tại";
+                ViewBag.style = "~/Styles/styles.css";
+                return View("Index");
             }
-            return View();
+            else
+            {
+                TempData["loginfailed"] = "Tên đăng nhập hoặc mật khẩu không hợp lệ";
+                return View("Login");
+            }
+            
         }
         public ActionResult CatalogueView()
         {
@@ -87,14 +100,7 @@ namespace DealAssistDemo2.Controllers
         }
         public ActionResult Login()
         {
-            var loginmodel = new loginhandle();
-            /* code SQL */
-            /* code SQL */
-            /* code SQL */
-            /* code SQL */
-            /* code SQL */
-            /* code SQL */
-            return View("userlogin");
+            return View();
         }
         public ActionResult Signup()
         {

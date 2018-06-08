@@ -37,23 +37,19 @@
     <div class="databorder">
         <ul class="maindataul">
             @{
-                for (int i = 0; i < ViewBag.sanpham.Count && i < 10; i++)
+                if (ViewBag.sanpham != null)
                 {
-                    <li class="datali">
-                        <div>
-                            <img class="liimg" src="~/@ViewBag.urlimgage[i]" />
-                        </div>
-                        @ViewBag.sanpham[i]
-                    </li>
+                    for (int i = 0; i < ViewBag.sanpham.Count && i < 10; i++)
+                    {
+                        <li class="datali">
+                            <div>
+                                <img class="liimg" src="~/@ViewBag.urlimgage[i]" />
+                            </div>
+                            @ViewBag.sanpham[i]
+                        </li>
+                    }
                 }
             }
-
-            @{
-                ListHome model = new ListHome();
-                model.getsql();
-                ViewBag.error = model.error;
-            }
-            <text>@ViewBag.error</text>
         </ul>
     </div>
 </div>

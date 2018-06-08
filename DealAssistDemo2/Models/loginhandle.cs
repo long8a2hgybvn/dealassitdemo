@@ -8,7 +8,9 @@ namespace DealAssistDemo2.Models
 {
     public class loginhandle
     {
+        [Required]
         public string user { get; set; }
+        [Required]
         public string pass { get; set; }
     }
 }

@@ -122,6 +122,7 @@
     <Content Include="Assets\Picture\household\1.jpg" />
     <Content Include="Assets\Picture\household\5.jpg" />
     <Content Include="Assets\Picture\household\8.jpg" />
+    <Content Include="Assets\Picture\household\9.jpg" />
     <Content Include="Assets\Picture\techstuff\case.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -204,7 +205,7 @@
     <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
-    <Content Include="Views\HomePage\userlogin.cshtml" />
+    <Content Include="Views\HomePage\Login.cshtml" />
     <Content Include="Views\HomePage\Signup.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

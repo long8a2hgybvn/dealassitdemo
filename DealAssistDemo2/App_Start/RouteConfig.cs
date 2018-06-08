@@ -16,7 +16,7 @@ namespace DealAssistDemo2
             routes.MapRoute(
                 name: "HomePage",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "HomePage", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "HomePage", action = "Login", id = UrlParameter.Optional }
             );
         }
     }
