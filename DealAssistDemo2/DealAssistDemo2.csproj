@@ -96,6 +96,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Picture\54481.png" />
     <Content Include="Assets\Picture\fashion\main.jpg" />
     <Content Include="Assets\Picture\fashion\5.png" />
     <Content Include="Assets\Picture\fashion\6.jpg" />
@@ -215,7 +216,7 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="Styles\Roboto-LightItalic.ttf" />
-    <Content Include="DA %285%29.bak" />
+    <Content Include="DA %286%29.bak" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\defaultHome.cshtml" />
     <Content Include="Views\HomePage\Index.cshtml" />

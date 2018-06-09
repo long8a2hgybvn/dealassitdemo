@@ -100,7 +100,6 @@ namespace DealAssistDemo2.Controllers
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = @" Data Source= 103.27.60.66; Initial Catalog= dealassi_dealassist; User ID = dealassist; Password = 12345";
             conn.Open();
-            SqlCommand check = new SqlCommand("SELECT TenSP")
             return View();
         }
         public ActionResult Favorite()
