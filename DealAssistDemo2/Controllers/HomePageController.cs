@@ -227,10 +227,11 @@ namespace DealAssistDemo2.Controllers
             {
                 TempData["alertMessage"] = "Tên đăng nhập đã tồn tại";
             }
+            Response.Cookies.Add(createusercookie(model.id));
             SqlCommand adduser = new SqlCommand("INSERT INTO BangNgDung(ID,Pass,Fullname,Email,Gender) Values ('" + model.id + "','" + model.pass + "',N'" + model.name + "','" + model.email + "',N'" + model.gender + "')", conn);
             // ID -> Pass -> Fullname -> Email -> Gender
             adduser.ExecuteNonQuery();
-            createusercookie(model.id);
+            
             getfavlist();
             ViewBag.nonfavlist = nonfavlist;
             ViewBag.nonfavlistimg = nonfavlistimg;
