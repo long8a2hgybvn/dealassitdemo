@@ -189,6 +189,7 @@
     <Content Include="Styles\StyleProductTable.css" />
     <Content Include="Styles\styles.css" />
     <Content Include="Styles\stylescatalogueview.css" />
+    <Content Include="Styles\viewProductStyle.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -232,6 +233,7 @@
     <Content Include="Views\HomePage\UserControl.cshtml" />
     <Content Include="Views\HomePage\Product_Details.cshtml" />
     <Content Include="Views\HomePage\Product_table.cshtml" />
+    <Content Include="Views\HomePage\ProductPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

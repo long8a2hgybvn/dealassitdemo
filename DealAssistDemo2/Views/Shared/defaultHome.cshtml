@@ -18,14 +18,15 @@
                     <div class="thebox">
                         @using DealAssistDemo2.Models
                         @model search
-                        @using (Html.BeginForm("search", "HomePage", FormMethod.Post))
+                        @using (Html.BeginForm("getProduct", "HomePage", FormMethod.Post))
                         {
-                            @Html.TextBoxFor(model => model.inputstring)
+                            @Html.TextBoxFor(model => model.inputstring, new { @class = "hopsearch" , @placeholder="Tìm kiếm gì đó với DealAssist"})
+                            <div class="search">
+                                <input type="submit" value="" class="searchbutton" onclick="location.href = '@Url.Action("getProduct", "HomePage")'" />
+                            </div>
                         }
                     </div>
-                    <div class="search">
-                        <input type="submit" value="" class="searchbutton" onclick="parent.location='@Url.Action("search", "HomePage")'"/>
-                    </div>
+                    
                 </div>
             </div>
             <div class="bookmarks">

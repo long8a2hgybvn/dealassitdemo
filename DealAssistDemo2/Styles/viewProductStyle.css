@@ -1,0 +1,26 @@
+﻿body {
+    background-color: #bdc3c7
+}
+.big_box{
+    margin-left: 12.5vw;
+    margin-top: 1vw;
+    width:75vw;
+    background-color:#ffffff;
+    min-height: 60vh;
+    padding: 1vw 2vw
+}
+.small_box{
+    margin:1vw;
+    width:10vw;
+    height:10vw;
+    border: solid 3px;
+    padding: 0.5vw;
+    text-align: center;
+    display: inline-block;
+}
+.footer {
+    bottom: 0;
+    position: fixed;
+    width: 100vw;
+    background-color: #3498db;
+}

@@ -95,13 +95,7 @@ namespace DealAssistDemo2.Controllers
             ViewBag.style = "~/Styles/styles.css";
             return View();
         }
-        public ActionResult search(string model)
-        {
-            SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = @" Data Source= 103.27.60.66; Initial Catalog= dealassi_dealassist; User ID = dealassist; Password = 12345";
-            conn.Open();
-            return View();
-        }
+
         public ActionResult Favorite()
         {
             getfavlist();
@@ -245,10 +239,21 @@ namespace DealAssistDemo2.Controllers
         }
         public ActionResult Product_Details()
         {
-            var data = model.sanpham;
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = @" Data Source= 103.27.60.66; Initial Catalog= dealassi_dealassist; User ID = dealassist; Password = 12345";
+            conn.Open();
+            string getfavoriteproductscmd = "SELECT TenSP FROM SPTheoDoi";
+            SqlCommand getfavoriteproducts = new SqlCommand(getfavoriteproductscmd, conn);
+            SqlDataReader reader = getfavoriteproducts.ExecuteReader();
+            List<String> data = new List<string>();
+            while (reader.Read())
+            {
+                data.Add(reader.GetString(0));
+            }
+            List<String> product_name = data.Distinct().ToList();
             model.getdata();
             ViewBag.urlimgage = model.urlimage;
-            ViewBag.sanpham = data;
+            ViewBag.sanpham = product_name;
             ViewBag.style = "~/Styles/StyleProductDetails.css";
             return View();
         }
@@ -401,7 +406,42 @@ namespace DealAssistDemo2.Controllers
             }
             SqlCommand getlovetag = new SqlCommand("SELECT " +bestcatalog+ " FROM BangNgDung WHERE ID='" + Request.Cookies["tendangnhap"].Value.ToString() + "'", conn);
             string alltag=  getlovetag.ExecuteScalar().ToString();
-            
+
+        }
+        List<string> result = new List<string>();
+
+        public ActionResult ProductPage()
+        {
+            ViewBag.result = result;
+            ViewBag.style = "~/Styles/viewProductStyle.css";
+            return View();
+        }
+        [HttpPost]
+        public ActionResult getProduct(FormCollection collection)
+        {
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = @" Data Source= 103.27.60.66; Initial Catalog= dealassi_dealassist; User ID = dealassist; Password = 12345";
+            conn.Open();
+            string getfavoriteproductscmd = "SELECT TenSP FROM BangSP";
+            SqlCommand getfavoriteproducts = new SqlCommand(getfavoriteproductscmd, conn);
+            SqlDataReader reader = getfavoriteproducts.ExecuteReader();
+            List<String> product_name = new List<string>();
+            while (reader.Read())
+            {
+                product_name.Add(reader.GetString(0));
+            }
+            string input_string = collection["inputstring"];
+            for (int i = 0; i < product_name.Count; i++)
+            {
+                if (product_name[i].ToLower().Contains(input_string.ToLower()))
+                {
+                    result.Add(product_name[i]);
+                }
+            }
+            conn.Close();
+            ViewBag.product = result.Distinct().ToList<String>();
+            ViewBag.style = "~/Styles/viewProductStyle.css";
+            return View("ProductPage");
         }
     }
 }

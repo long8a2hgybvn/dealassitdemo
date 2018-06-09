@@ -32,3 +32,14 @@ body {
 a {
     text-decoration:none;
 }
+.submit {
+    vertical-align: middle;
+    display: inline-block;
+    height: 8vh;
+    width: 40vw;
+    margin: auto 0;
+    background-color: #3498db;
+    color: white;
+    outline: none;
+    border: none;
+}
