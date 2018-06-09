@@ -215,7 +215,7 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="Styles\Roboto-LightItalic.ttf" />
-    <Content Include="DA %284%29.bak" />
+    <Content Include="DA %285%29.bak" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\defaultHome.cshtml" />
     <Content Include="Views\HomePage\Index.cshtml" />
