@@ -16,10 +16,15 @@
             <div class="searchbar">
                 <div class="containbox">
                     <div class="thebox">
-                        <input id="inputstring" type="text" placeholder="Cho chúng tôi biết bạn muốn gì" />
+                        @using DealAssistDemo2.Models
+                        @model search
+                        @using (Html.BeginForm("search", "HomePage", FormMethod.Post))
+                        {
+                            @Html.TextBoxFor(model => model.inputstring)
+                        }
                     </div>
                     <div class="search">
-                        <button id="search"></button>
+                        <input type="submit" onclick="parent.location='@Url.Action("search", "HomePage")'"/>
                     </div>
                 </div>
             </div>

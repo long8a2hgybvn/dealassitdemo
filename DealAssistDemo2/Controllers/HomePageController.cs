@@ -95,6 +95,14 @@ namespace DealAssistDemo2.Controllers
             ViewBag.style = "~/Styles/styles.css";
             return View();
         }
+        public ActionResult search(string model)
+        {
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = @" Data Source= 103.27.60.66; Initial Catalog= dealassi_dealassist; User ID = dealassist; Password = 12345";
+            conn.Open();
+            SqlCommand check = new SqlCommand("SELECT TenSP")
+            return View();
+        }
         public ActionResult Favorite()
         {
             getfavlist();
@@ -143,7 +151,7 @@ namespace DealAssistDemo2.Controllers
         }
         public ActionResult cataTech()
         {
-            ViewBag.PreCata = "techstuff";
+            ViewBag.PreCata = "tech";
             ViewBag.PreCataText = "Đồ công nghệ và phụ kiện";
             ViewBag.style = "~/Styles/stylescatalogueview.css";
             return View("CatalogueView");
@@ -257,20 +265,60 @@ namespace DealAssistDemo2.Controllers
             ViewBag.style = "~/Styles/StyleProductTable.css";
             return View();
         }
-        public int techp = 0;
-        public int fashp = 0;
-        public int healp = 0;
-        public int house = 0;
-        public int grocp = 0;
+        public int tech = 0;
+        public int fashion = 0;
+        public int healthcare = 0;
+        public int household = 0;
+        public int grocery = 0;
         public int trans = 0;
         public void know()
         {
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = @" Data Source= 103.27.60.66; Initial Catalog= dealassi_dealassist; User ID = dealassist; Password = 12345";
             conn.Open();
-            SqlCommand getthematch = new SqlCommand("SELECT tech FROM BangNgDung WHERE ID='"+ Request.Cookies["tendangnhap"].Value.ToString() + "'",conn);
-            techp = Int32.Parse(getthematch.ExecuteScalar().ToString());
-
+            SqlCommand gettechp = new SqlCommand("SELECT tech FROM BangNgDung WHERE ID='"+ Request.Cookies["tendangnhap"].Value.ToString() + "'",conn);
+            tech = Int32.Parse(gettechp.ExecuteScalar().ToString());
+            SqlCommand getfashp = new SqlCommand("SELECT fashion FROM BangNgDung WHERE ID='" + Request.Cookies["tendangnhap"].Value.ToString() + "'", conn);
+            fashion = Int32.Parse(getfashp.ExecuteScalar().ToString());
+            SqlCommand gettrans = new SqlCommand("SELECT trans FROM BangNgDung WHERE ID='" + Request.Cookies["tendangnhap"].Value.ToString() + "'", conn);
+            trans = Int32.Parse(getfashp.ExecuteScalar().ToString());
+            SqlCommand gethouse = new SqlCommand("SELECT household FROM BangNgDung WHERE ID='" + Request.Cookies["tendangnhap"].Value.ToString() + "'", conn);
+            household = Int32.Parse(getfashp.ExecuteScalar().ToString());
+            SqlCommand getheal = new SqlCommand("SELECT healcare FROM BangNgDung WHERE ID='" + Request.Cookies["tendangnhap"].Value.ToString() + "'", conn);
+            healthcare = Int32.Parse(getfashp.ExecuteScalar().ToString());
+            SqlCommand getgroc = new SqlCommand("SELECT grocery FROM BangNgDung WHERE ID='" + Request.Cookies["tendangnhap"].Value.ToString() + "'", conn);
+            grocery = Int32.Parse(getfashp.ExecuteScalar().ToString());
+            List<int> bundle = new List<int>()
+            {
+                tech,fashion,healthcare,household,grocery,trans
+            };
+            int best = bundle.Max();
+            int count = bundle.IndexOf(best);
+            string bestcatalog = "";
+            switch (count)
+            {
+                case 0:
+                    bestcatalog = "tech";
+                    break;
+                case 1:
+                    bestcatalog = "fashion";
+                    break;
+                case 2:
+                    bestcatalog = "healthcare";
+                    break;
+                case 3:
+                    bestcatalog = "household";
+                    break;
+                case 4:
+                    bestcatalog = "grocery";
+                    break;
+                case 5:
+                    bestcatalog = "trans";
+                    break;
+            }
+            SqlCommand getlovetag = new SqlCommand("SELECT " +bestcatalog+ " FROM BangNgDung WHERE ID='" + Request.Cookies["tendangnhap"].Value.ToString() + "'", conn);
+            string alltag=  getlovetag.ExecuteScalar().ToString();
+            
         }
     }
 }

@@ -7,7 +7,7 @@ namespace DealAssistDemo2.Models
 {
     public class CatalogueView
     {
-        public List<string> techstuff = new List<string>()
+        public List<string> tech = new List<string>()
         {
             "Điện thoại di động",
             "Máy tính bảng",
@@ -116,7 +116,7 @@ namespace DealAssistDemo2.Models
             "Assets/Picture/grocery/4.png",
             "Assets/Picture/grocery/5.jpg"
         };
-        public List<string> transport = new List<string>()
+        public List<string> trans = new List<string>()
         {
             "Ô tô",
             "Xe máy",
