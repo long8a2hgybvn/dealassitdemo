@@ -1,0 +1,43 @@
+﻿@using DealAssistDemo2.Models
+@using DealAssistDemo2.Controllers
+@{
+    ViewBag.Title = "Product_table";
+    Layout = "~/Views/Shared/defaultHome.cshtml";
+}
+
+<table class="table1">
+    <td class="block" style="width: 30vw">
+        <div style="text-align:center">
+            <img src="~/@ViewBag.anh" style="width:16vw; height: 16vw" />
+            <br />
+            <text>@ViewBag.ten</text>
+        </div>
+    </td>
+    <td class="block" style="width: 45vw">
+        <text>Thông tin cơ bản</text>
+        <a href="@Url.Action("Product_Details","HomePage")" style="color:#0094ff">Xem thêm ></a>
+    </td>
+</table>
+
+<table class="table2">
+    <tr>
+        <td class="block" style="color:#0026ff;text-align:center"><b>Nhà cung cấp</b></td>
+        <td class="block" style="color:#0026ff;text-align:center"><b>Nơi bán</b></td>
+        <td class="block" style="color:#0026ff;text-align:center"><b>Giá</b></td>
+    </tr>
+    @for (int i = 0; i < ViewBag.nhacungcap.Count; i++)
+    {
+        <tr>
+            <td class="block">
+                <text>@ViewBag.nhacungcap[i]</text>
+            </td>
+            <td class="block">
+                <a href="@ViewBag.noiban[i]">@ViewBag.noiban[i]</a>
+            </td>
+            <td class="block">
+                <text>@ViewBag.gia[i]</text>
+            </td>
+        </tr>
+    }
+</table>
+

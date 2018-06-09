@@ -11,11 +11,11 @@ namespace DealAssistDemo2.Controllers
 {
     public class HomePageController : Controller
     {
+        public BuyLocation model1 = new BuyLocation();
         public List<string> nonfavlist = new List<string>();
         public List<string> nonfavlistimg = new List<string>();
         public List<string> showfavlist = new List<string>();
         public List<string> showfavlistimg = new List<string>();
-
         public void getfavlist()
         {
             SqlConnection conn = new SqlConnection();
@@ -77,9 +77,21 @@ namespace DealAssistDemo2.Controllers
         // End Trusted Login
         public ActionResult Index()
         {
-            var data = model.sanpham;
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = @" Data Source= 103.27.60.66; Initial Catalog= dealassi_dealassist; User ID = dealassist; Password = 12345";
+            conn.Open();
+            string getfavoriteproductscmd = "SELECT TenSP FROM SPTheoDoi";
+            SqlCommand getfavoriteproducts = new SqlCommand(getfavoriteproductscmd, conn);
+            SqlDataReader reader = getfavoriteproducts.ExecuteReader();
+            List<String> data = new List<string>();
+            while (reader.Read())
+            {
+                data.Add(reader.GetString(0));
+            }
+            List<String> product_name = data.Distinct().ToList();
+            model.getdata();
             ViewBag.urlimgage = model.urlimage;
-            ViewBag.sanpham = data;
+            ViewBag.sanpham = product_name;
             ViewBag.style = "~/Styles/styles.css";
             return View();
         }
@@ -115,7 +127,7 @@ namespace DealAssistDemo2.Controllers
             {
                 Response.Cookies.Add(createusercookie(model.user));
                 ViewBag.style = "~/Styles/styles.css";
-                return View("Index");
+                return RedirectToAction("Index", "HomePage");
             }
             else
             {
@@ -222,6 +234,43 @@ namespace DealAssistDemo2.Controllers
         public ActionResult UserControl()
         {
             return View();
+        }
+        public ActionResult Product_Details()
+        {
+            var data = model.sanpham;
+            model.getdata();
+            ViewBag.urlimgage = model.urlimage;
+            ViewBag.sanpham = data;
+            ViewBag.style = "~/Styles/StyleProductDetails.css";
+            return View();
+        }
+
+        public ActionResult Product_table(int index)
+        {
+            model.getdata();
+            model1.getdata();
+            ViewBag.anh = model.urlimage[index];
+            ViewBag.ten = model.sanpham[index];
+            ViewBag.gia = model1.gia;
+            ViewBag.noiban = model1.noiban;
+            ViewBag.nhacungcap = model1.nhacungcap;
+            ViewBag.style = "~/Styles/StyleProductTable.css";
+            return View();
+        }
+        public int techp = 0;
+        public int fashp = 0;
+        public int healp = 0;
+        public int house = 0;
+        public int grocp = 0;
+        public int trans = 0;
+        public void know()
+        {
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = @" Data Source= 103.27.60.66; Initial Catalog= dealassi_dealassist; User ID = dealassist; Password = 12345";
+            conn.Open();
+            SqlCommand getthematch = new SqlCommand("SELECT tech FROM BangNgDung WHERE ID='"+ Request.Cookies["tendangnhap"].Value.ToString() + "'",conn);
+            techp = Int32.Parse(getthematch.ExecuteScalar().ToString());
+
         }
     }
 }

@@ -1,0 +1,55 @@
+﻿body {
+}
+
+#li {
+    list-style-type: none;
+    display: block
+}
+
+#img {
+    width: 30vw;
+    height: 70vh;
+}
+
+.databorder {
+    width: 100vw;
+    height: 40vh;
+    display: table;
+    padding: 0
+}
+
+.maindataul {
+    display: inline-block;
+    width: 65vw;
+    height: 40vh;
+    list-style: none;
+    padding-left: 12vw
+}
+
+.datali {
+    display: inline-block;
+    width: 10vw;
+    height: 10vw;
+    border-style: solid;
+    border-width: 3px;
+    text-align: center;
+}
+
+.liimg {
+    height: 8vw;
+    width: 8vw;
+}
+
+.secondpart {
+    background-color: #47ccf7;
+    width: 75vw;
+    height: 12vw;
+    margin-top: 1vw;
+    margin-left:12.5vw;
+    padding: 0;
+    margin-bottom: 6vw
+}
+
+.footer {
+    background-color: #3498db;
+}

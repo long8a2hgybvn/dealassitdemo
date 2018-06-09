@@ -1,0 +1,27 @@
+﻿body {
+}
+
+.block {
+    border: 1px solid black;
+    padding: 1vw;
+}
+
+.footer {
+    background-color: #3498db;
+}
+
+.table1 {
+    margin-left: 12.5vw;
+    margin-bottom: 1vw;
+    border: 1px solid black;
+    background-color: aliceblue;
+    width: 75vw;
+}
+
+.table2 {
+    margin-left: 12.5vw;
+    margin-bottom: 8vw;
+    border: 1px solid black;
+    background-color: aliceblue;
+    width: 75vw
+}

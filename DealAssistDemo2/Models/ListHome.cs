@@ -24,5 +24,18 @@ namespace DealAssistDemo2.Models
                 error = e.ToString();
             }
         }
+        public void getdata()
+        {
+            sanpham.Add("Laptop1");
+            sanpham.Add("Laptop2");
+            sanpham.Add("Laptop3");
+            sanpham.Add("Laptop4");
+            sanpham.Add("Laptop5");
+            urlimage.Add("Assets/Picture/bee.jpg");
+            urlimage.Add("Assets/Picture/bee.jpg");
+            urlimage.Add("Assets/Picture/bee.jpg");
+            urlimage.Add("Assets/Picture/bee.jpg");
+            urlimage.Add("Assets/Picture/bee.jpg");
+        }
     }
 }

@@ -66,14 +66,23 @@
     list-style:none;
     padding-left:25vw;
 }
-.datali{
-    display: inline-block;
-    width:10vw;
-    height:10vw;
+.datali {
+    display: block;
+    width: 12vw;
+    height: 12vw;
+    margin-top: 0;
     border-style: solid;
-    border-width: 3px;
-    margin: 0.5vw 0.5vw 0.5vw 0.5vw;
-    text-align:center
+    border-width: 1px;
+    float: left;
+    margin-left: 1.8vw;
+    padding-top:2px;
+    text-align: center;
+}
+a {
+    text-decoration: none;
+}
+text{
+    text-decoration:none;
 }
 .label2txt {
     font-size: 1.7vh;
@@ -88,8 +97,8 @@
     width: 72.5vw;
 }
 .liimg {
-    height: 8vw;
-    width: 8vw;
+    height: 10vw;
+    width: 10vw;
 }
 .footer {
     background-color: #3498db;

@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Product_Details";
+    Layout = "~/Views/Shared/defaultHome.cshtml";
+}
+<div style="width: 12.5vw; display: inline-block"></div>
+<div style="display: inline-block; border:hidden ; background-color: #e6e6e6; padding: 30px 30px; width: 70vw">
+    <img src="~/Assets/Picture/bee.jpg" id="img" />
+    <ul style="display:inline-block; vertical-align: top">
+        <li id="li"><h2>Tên sản phẩm</h2></li>
+        <li id="li">Danh mục sản phẩm</li>
+        <li id="li">Mô tả sản phẩm</li>
+    </ul>
+</div>
+<div style="margin-left: 12.5vw; margin-top:1vw">
+    <text style="font-style:italic">* Có thể bạn quan tâm --></text>
+</div>
+<div class="secondpart">
+    <div class="databorder">
+        <ul class="maindataul">
+            @{
+                if (ViewBag.sanpham != null)
+                {
+                    for (int i = 0; i < ViewBag.sanpham.Count && i < 10; i++)
+                    {
+                        <li class="datali">
+                            <a href="@Url.Action("Product_Details","HomePage")">
+                                <img class="liimg" src="~/@ViewBag.urlimgage[i]" />
+                                @ViewBag.sanpham[i]
+                            </a>
+                        </li>
+                    }
+                }
+            }
+        </ul>
+    </div>
+</div>
