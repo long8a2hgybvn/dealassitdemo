@@ -48,12 +48,12 @@ namespace DealAssistDemo2.Controllers
             var favlist = getfavlist1.ExecuteScalar();
             SqlCommand replace = new SqlCommand("UPDATE dbo.BangNgDung SET SoThich=N'" + favlist+ " " + choosen + "' WHERE ID='" + Request.Cookies["tendangnhap"].Value.ToString() + "'", conn);
             replace.ExecuteNonQuery();
+            conn.Close();
             getfavlist();
             ViewBag.nonfavlist = nonfavlist;
             ViewBag.nonfavlistimg = nonfavlistimg;
             ViewBag.showfavlist = showfavlist;
             ViewBag.showfavlistimg = showfavlistimg;
-            conn.Close();
             return View("Favorite");
         }
         public HttpCookie createusercookie(string value)
