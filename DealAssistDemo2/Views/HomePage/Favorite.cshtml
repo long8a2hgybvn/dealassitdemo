@@ -9,12 +9,28 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Favorite</title>
+    @Styles.Render("~/Styles/favpage.css")
 </head>
 <body>
-    <h1>Cho chúng tôi biết mong muốn của bạn</h1>
-    @for (int i = 0; i < ViewBag.sanpham.Count && i < 10; i++)
-    {
-
-    }
+    <div>
+        <h1>Cho chúng tôi biết mong muốn của bạn</h1>
+    </div>
+    <div class="boxes">
+        @{
+            for (int i = 0; i < ViewBag.nonfavlist.Count; i++)
+            {
+                if (i == 6)
+                {
+                    <br />
+                }
+                <div class="datacontainer">
+                    <a href="">
+                        <img class="imgca" src="~/@ViewBag.nonfavlistimg[i]" /><br />
+                        <text class="titleca">@ViewBag.nonfavlist[i]</text>
+                    </a>
+                </div>
+            }
+        }
+    </div>
 </body>
 </html>

@@ -11,6 +11,34 @@ namespace DealAssistDemo2.Controllers
 {
     public class HomePageController : Controller
     {
+        public List<string> nonfavlist = new List<string>();
+        public List<string> nonfavlistimg = new List<string>();
+        public void getfavlist()
+        {
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = @" Data Source= 103.27.60.66; Initial Catalog= dealassi_dealassist; User ID = dealassist; Password = 12345";
+            conn.Open();
+            SqlCommand getfavlist = new SqlCommand("SELECT SoThich From dbo.BangNgDung Where ID='" + Request.Cookies["tendangnhap"].Value.ToString() + "'",conn);
+            var favlist = getfavlist.ExecuteScalar();
+            var fav = new fav();
+            for(int i =0; i<fav.catalist.Count; i++)
+            {
+                if (favlist.ToString().Contains(i.ToString()) == false)
+                {
+
+                    nonfavlistimg.Add(fav.cataimg[i]);
+                    nonfavlist.Add(fav.catalist[i]);
+                }
+            }
+        }
+        public HttpCookie createusercookie(string value)
+        {
+            HttpCookie tendangnhap = new HttpCookie("tendangnhap");
+            tendangnhap.Value = value;
+            tendangnhap.Expires = DateTime.Now.AddYears(2);
+            return tendangnhap;
+        }
+
         public ListHome model = new ListHome();
         public int numberofdata = 5;
         // Trusted Login
@@ -32,6 +60,9 @@ namespace DealAssistDemo2.Controllers
         }
         public ActionResult Favorite()
         {
+            getfavlist();
+            ViewBag.nonfavlist = nonfavlist;
+            ViewBag.nonfavlistimg = nonfavlistimg;
             return View();
         }
         [HttpPost]
@@ -50,6 +81,7 @@ namespace DealAssistDemo2.Controllers
             }
             if(model.pass == checkuserread.ToString())
             {
+                Response.Cookies.Add(createusercookie(model.user));
                 ViewBag.style = "~/Styles/styles.css";
                 return View("Index");
             }
@@ -144,7 +176,7 @@ namespace DealAssistDemo2.Controllers
             {
                 TempData["alertMessage"] = "Tên đăng nhập đã tồn tại";
             }
-            SqlCommand adduser = new SqlCommand("INSERT INTO BangNgDung Values ('" + model.id + "','" + model.pass + "',N'" + model.name + "','" + model.email + "',N'" + model.gender + "')", conn);
+            SqlCommand adduser = new SqlCommand("INSERT INTO BangNgDung(ID,Pass,Fullname,Email,Gender) Values ('" + model.id + "','" + model.pass + "',N'" + model.name + "','" + model.email + "',N'" + model.gender + "')", conn);
             // ID -> Pass -> Fullname -> Email -> Gender
             adduser.ExecuteNonQuery();
             return View("Signup");
