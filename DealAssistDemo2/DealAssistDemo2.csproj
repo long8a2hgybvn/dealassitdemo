@@ -188,6 +188,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CatalogueView.cs" />
+    <Compile Include="Models\fav.cs" />
     <Compile Include="Models\ListHome.cs" />
     <Compile Include="Models\loginhandle.cs" />
     <Compile Include="Models\signup.cs" />
@@ -207,6 +208,7 @@
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <Content Include="Views\HomePage\Login.cshtml" />
     <Content Include="Views\HomePage\Signup.cshtml" />
+    <Content Include="Views\HomePage\Favorite.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -30,6 +30,10 @@ namespace DealAssistDemo2.Controllers
             ViewBag.style = "~/Styles/styles.css";
             return View();
         }
+        public ActionResult Favorite()
+        {
+            return View();
+        }
         [HttpPost]
         public ActionResult userlogin(loginhandle model)
         {
@@ -39,6 +43,11 @@ namespace DealAssistDemo2.Controllers
             string checkusercmd = "SELECT Pass FROM BangNgDung WHERE ID ='" + model.user + "'";
             SqlCommand checkuser = new SqlCommand(checkusercmd, conn);
             var checkuserread = checkuser.ExecuteScalar();
+            if(model.pass == null || model.user == null)
+            {
+                TempData["loginfailed"] = "Tên đăng nhập hoặc mật khẩu không hợp lệ";
+                return View("Login");
+            }
             if(model.pass == checkuserread.ToString())
             {
                 ViewBag.style = "~/Styles/styles.css";
