@@ -34,5 +34,21 @@
             }
         }
     </div>
+    <h4>Các mục mà bạn đã thích</h4>
+    @{
+        for (int i = 0; i < ViewBag.showfavlist.Count; i++)
+        {
+            if (i == 6)
+            {
+                <br />
+            }
+            <div class="datacontainer">
+                <a href=''>
+                    <img class="imgca" src="~/@ViewBag.showfavlistimg[i]" /><br />
+                    <text class="titleca">@ViewBag.showfavlist[i]</text>
+                </a>
+            </div>
+        }
+    }
 </body>
 </html>

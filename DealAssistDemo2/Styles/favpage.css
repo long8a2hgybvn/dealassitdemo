@@ -29,3 +29,6 @@ body {
     text-align: center;
     margin-top: 4vh;
 }
+a {
+    text-decoration:none;
+}

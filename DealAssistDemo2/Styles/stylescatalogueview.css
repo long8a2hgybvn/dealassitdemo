@@ -1,4 +1,13 @@
-﻿.navbar a {
+﻿@font-face {
+    font-family: "Roboto-LightItalic";
+    src: url(Roboto-LightItalic.ttf);
+    src: local("Roboto-LightItalic"), url(Roboto-LightItalic.ttf), format('truetype');
+}
+
+body {
+    font-family: Roboto;
+}
+    .navbar a {
     text-decoration: none;
     font-size: larger;
     color: #636e72;
@@ -33,4 +42,10 @@
     position: fixed;
     width: 100vw;
     background-color: #3498db;
+}
+a {
+    text-decoration: none;
+}
+text {
+    text-decoration: none
 }

@@ -13,7 +13,9 @@ namespace DealAssistDemo2.Controllers
     {
         public List<string> nonfavlist = new List<string>();
         public List<string> nonfavlistimg = new List<string>();
-        
+        public List<string> showfavlist = new List<string>();
+        public List<string> showfavlistimg = new List<string>();
+
         public void getfavlist()
         {
             SqlConnection conn = new SqlConnection();
@@ -32,6 +34,24 @@ namespace DealAssistDemo2.Controllers
             }
             conn.Close();
         }
+        public void showFav()
+        {
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = @" Data Source= 103.27.60.66; Initial Catalog= dealassi_dealassist; User ID = dealassist; Password = 12345";
+            conn.Open();
+            SqlCommand getfavlist = new SqlCommand("SELECT SoThich From dbo.BangNgDung Where ID='" + Request.Cookies["tendangnhap"].Value.ToString() + "'", conn);
+            var favlist = getfavlist.ExecuteScalar();
+            var fav = new fav();
+            for (int i = 0; i < fav.catalist.Count; i++)
+            {
+                if (favlist.ToString().Contains(fav.catalist[i]))
+                {
+                    showfavlistimg.Add(fav.cataimg[i]);
+                    showfavlist.Add(fav.catalist[i]);
+                }
+            }
+            conn.Close();
+        }
         public ActionResult addFav(string choosen)
         {
             SqlConnection conn = new SqlConnection();
@@ -43,7 +63,7 @@ namespace DealAssistDemo2.Controllers
             replace.ExecuteNonQuery();
             getfavlist();
             ViewBag.nonfavlist = nonfavlist;
-            ViewBag.nonfavlistimg = nonfavlistimg;
+            ViewBag.nonfavlistimg = showfavlistimg;
             conn.Close();
             return View("Favorite");
         }
@@ -77,8 +97,11 @@ namespace DealAssistDemo2.Controllers
         public ActionResult Favorite()
         {
             getfavlist();
+            showFav();
             ViewBag.nonfavlist = nonfavlist;
             ViewBag.nonfavlistimg = nonfavlistimg;
+            ViewBag.showfavlist = showfavlist;
+            ViewBag.showfavlistimg = showfavlistimg;
             return View();
         }
         [HttpPost]
