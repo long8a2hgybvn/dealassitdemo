@@ -21,30 +21,17 @@ namespace DealAssistDemo2.Controllers
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = @" Data Source= 103.27.60.66; Initial Catalog= dealassi_dealassist; User ID = dealassist; Password = 12345";
             conn.Open();
-            SqlCommand getfavlist = new SqlCommand("SELECT SoThich From dbo.BangNgDung Where ID='" + Request.Cookies["tendangnhap"].Value.ToString() + "'",conn);
-            var favlist = getfavlist.ExecuteScalar();
-            var fav = new fav();
-            for(int i =0; i<fav.catalist.Count; i++)
-            {
-                if (favlist.ToString().Contains(fav.catalist[i]) == false)
-                {
-                    nonfavlistimg.Add(fav.cataimg[i]);
-                    nonfavlist.Add(fav.catalist[i]);
-                }
-            }
-            conn.Close();
-        }
-        public void showFav()
-        {
-            SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = @" Data Source= 103.27.60.66; Initial Catalog= dealassi_dealassist; User ID = dealassist; Password = 12345";
-            conn.Open();
             SqlCommand getfavlist = new SqlCommand("SELECT SoThich From dbo.BangNgDung Where ID='" + Request.Cookies["tendangnhap"].Value.ToString() + "'", conn);
             var favlist = getfavlist.ExecuteScalar();
             var fav = new fav();
             for (int i = 0; i < fav.catalist.Count; i++)
             {
-                if (favlist.ToString().Contains(fav.catalist[i]))
+                if (favlist == null||favlist.ToString().Contains(fav.catalist[i]) == false )
+                {
+                    nonfavlistimg.Add(fav.cataimg[i]);
+                    nonfavlist.Add(fav.catalist[i]);
+                }
+                else
                 {
                     showfavlistimg.Add(fav.cataimg[i]);
                     showfavlist.Add(fav.catalist[i]);
@@ -63,7 +50,9 @@ namespace DealAssistDemo2.Controllers
             replace.ExecuteNonQuery();
             getfavlist();
             ViewBag.nonfavlist = nonfavlist;
-            ViewBag.nonfavlistimg = showfavlistimg;
+            ViewBag.nonfavlistimg = nonfavlistimg;
+            ViewBag.showfavlist = showfavlist;
+            ViewBag.showfavlistimg = showfavlistimg;
             conn.Close();
             return View("Favorite");
         }
@@ -97,7 +86,6 @@ namespace DealAssistDemo2.Controllers
         public ActionResult Favorite()
         {
             getfavlist();
-            showFav();
             ViewBag.nonfavlist = nonfavlist;
             ViewBag.nonfavlistimg = nonfavlistimg;
             ViewBag.showfavlist = showfavlist;
@@ -223,7 +211,17 @@ namespace DealAssistDemo2.Controllers
             SqlCommand adduser = new SqlCommand("INSERT INTO BangNgDung(ID,Pass,Fullname,Email,Gender) Values ('" + model.id + "','" + model.pass + "',N'" + model.name + "','" + model.email + "',N'" + model.gender + "')", conn);
             // ID -> Pass -> Fullname -> Email -> Gender
             adduser.ExecuteNonQuery();
-            return View("Signup");
+            createusercookie(model.id);
+            getfavlist();
+            ViewBag.nonfavlist = nonfavlist;
+            ViewBag.nonfavlistimg = nonfavlistimg;
+            ViewBag.showfavlist = showfavlist;
+            ViewBag.showfavlistimg = showfavlistimg;
+            return View("Favorite");
+        }
+        public ActionResult UserControl()
+        {
+            return View();
         }
     }
 }

@@ -219,6 +219,7 @@
     <Content Include="Views\HomePage\Login.cshtml" />
     <Content Include="Views\HomePage\Signup.cshtml" />
     <Content Include="Views\HomePage\Favorite.cshtml" />
+    <Content Include="Views\HomePage\UserControl.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

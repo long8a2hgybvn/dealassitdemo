@@ -25,12 +25,20 @@
                 {
                     <br />
                 }
-                <div class="datacontainer">
-                    <a href='@Url.Action("addFav", "HomePage", new { choosen = ViewBag.nonfavlist[i]})'>
-                        <img class="imgca" src="~/@ViewBag.nonfavlistimg[i]" /><br />
-                        <text class="titleca">@ViewBag.nonfavlist[i]</text>
-                    </a>
-                </div>
+                try
+                {
+                    <div class="datacontainer">
+                        <a href='@Url.Action("addFav", "HomePage", new { choosen = ViewBag.nonfavlist[i]})'>
+                            <img class="imgca" src="~/@ViewBag.nonfavlistimg[i]" /><br />
+                            <text class="titleca">@ViewBag.nonfavlist[i]</text>
+                        </a>
+                    </div>
+                }
+                catch(Exception e)
+                {
+                    break;
+                }
+
             }
         }
     </div>
