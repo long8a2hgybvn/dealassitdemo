@@ -15,6 +15,8 @@
     <div>
         <h1>Cho chúng tôi biết mong muốn của bạn</h1>
     </div>
+    <h4>Các mục mà bạn chưa thích</h4>
+    <h6>Để DealAssist giúp bạn tốt hơn, hãy cố gắng chọn chỉ những mục mà bạn thích nhất</h6>
     <div class="boxes">
         @{
             for (int i = 0; i < ViewBag.nonfavlist.Count; i++)
@@ -24,7 +26,7 @@
                     <br />
                 }
                 <div class="datacontainer">
-                    <a href="">
+                    <a href='@Url.Action("addFav", "HomePage", new { choosen = ViewBag.nonfavlist[i]})'>
                         <img class="imgca" src="~/@ViewBag.nonfavlistimg[i]" /><br />
                         <text class="titleca">@ViewBag.nonfavlist[i]</text>
                     </a>

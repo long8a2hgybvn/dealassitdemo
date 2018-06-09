@@ -13,6 +13,7 @@ namespace DealAssistDemo2.Controllers
     {
         public List<string> nonfavlist = new List<string>();
         public List<string> nonfavlistimg = new List<string>();
+        
         public void getfavlist()
         {
             SqlConnection conn = new SqlConnection();
@@ -23,13 +24,28 @@ namespace DealAssistDemo2.Controllers
             var fav = new fav();
             for(int i =0; i<fav.catalist.Count; i++)
             {
-                if (favlist.ToString().Contains(i.ToString()) == false)
+                if (favlist.ToString().Contains(fav.catalist[i]) == false)
                 {
-
                     nonfavlistimg.Add(fav.cataimg[i]);
                     nonfavlist.Add(fav.catalist[i]);
                 }
             }
+            conn.Close();
+        }
+        public ActionResult addFav(string choosen)
+        {
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = @" Data Source= 103.27.60.66; Initial Catalog= dealassi_dealassist; User ID = dealassist; Password = 12345";
+            conn.Open();
+            SqlCommand getfavlist1 = new SqlCommand("SELECT SoThich From dbo.BangNgDung Where ID='" + Request.Cookies["tendangnhap"].Value.ToString() + "'", conn);
+            var favlist = getfavlist1.ExecuteScalar();
+            SqlCommand replace = new SqlCommand("UPDATE dbo.BangNgDung SET SoThich=N'" + favlist+ " " + choosen + "' WHERE ID='" + Request.Cookies["tendangnhap"].Value.ToString() + "'", conn);
+            replace.ExecuteNonQuery();
+            getfavlist();
+            ViewBag.nonfavlist = nonfavlist;
+            ViewBag.nonfavlistimg = nonfavlistimg;
+            conn.Close();
+            return View("Favorite");
         }
         public HttpCookie createusercookie(string value)
         {
@@ -74,6 +90,11 @@ namespace DealAssistDemo2.Controllers
             string checkusercmd = "SELECT Pass FROM BangNgDung WHERE ID ='" + model.user + "'";
             SqlCommand checkuser = new SqlCommand(checkusercmd, conn);
             var checkuserread = checkuser.ExecuteScalar();
+            if (checkuserread == null)
+            {
+                TempData["loginfailed"] = "Tên đăng nhập hoặc mật khẩu không hợp lệ";
+                return View("Login");
+            }
             if(model.pass == null || model.user == null)
             {
                 TempData["loginfailed"] = "Tên đăng nhập hoặc mật khẩu không hợp lệ";

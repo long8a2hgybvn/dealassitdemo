@@ -18,7 +18,6 @@ namespace DealAssistDemo2.Models
             try
             {
                 conn.Open();
-                error = "thành cmn công";
             }
             catch (Exception e)
             {
