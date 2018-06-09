@@ -22,17 +22,21 @@
 <table class="table2">
     <tr>
         <td class="block" style="color:#0026ff;text-align:center"><b>Nhà cung cấp</b></td>
+        <td class="block" style="color:#0026ff;text-align:center"><b>Link</b></td>
         <td class="block" style="color:#0026ff;text-align:center"><b>Nơi bán</b></td>
         <td class="block" style="color:#0026ff;text-align:center"><b>Giá</b></td>
     </tr>
-    @for (int i = 0; i < ViewBag.nhacungcap.Count; i++)
+    @for (int i = 0; i < ViewBag.mancc.Count; i++)
     {
         <tr>
             <td class="block">
-                <text>@ViewBag.nhacungcap[i]</text>
+                <text>@ViewBag.mancc[i]</text>
             </td>
-            <td class="block">
-                <a href="@ViewBag.noiban[i]">@ViewBag.noiban[i]</a>
+            <td class="block" style="width: 30vw">
+                <a href="@ViewBag.website[i]">@ViewBag.website[i]</a>
+            </td>
+            <td class="block" style="width: 20vw">
+                <text>@ViewBag.noiban[i]</text>
             </td>
             <td class="block">
                 <text>@ViewBag.gia[i]</text>
@@ -40,4 +44,3 @@
         </tr>
     }
 </table>
-

@@ -29,8 +29,8 @@
             string getcatalogue = ViewBag.PreCata;
             switch (getcatalogue)
             {
-                case "techstuff":
-                    list = new CatalogueView().techstuff;
+                case "tech":
+                    list = new CatalogueView().tech;
                     listimg = new CatalogueView().techstuffimg;
                     break;
                 case "household":
@@ -50,7 +50,7 @@
                     listimg = new CatalogueView().groceryimg;
                     break;
                 case "cataTrans":
-                    list = new CatalogueView().transport;
+                    list = new CatalogueView().trans;
                     listimg = new CatalogueView().transportimg;
                     break;
             }

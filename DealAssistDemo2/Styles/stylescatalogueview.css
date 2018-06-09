@@ -22,6 +22,7 @@ body {
     width:16vh;
 }
 .boxes {
+    margin: auto 0;
     display: inline-block;
     width: 80vw;
     min-height: 15vh;
@@ -30,12 +31,13 @@ body {
 }
 .datacontainer {
     text-align: center;
-    display: inline-block;
+    display: block;
     border: 1px solid #b2bec3;
     height: 16vh;
     width: 17vh;
     margin: 2vh 3vh 2vh 3vh;
     padding-top: 1vh;
+    float: left
 }
 .footer {
     bottom: 0;

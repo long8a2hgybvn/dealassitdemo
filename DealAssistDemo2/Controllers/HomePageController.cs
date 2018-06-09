@@ -253,15 +253,98 @@ namespace DealAssistDemo2.Controllers
             return View();
         }
 
-        public ActionResult Product_table(int index)
+        public ActionResult Product_table(string product_name)
         {
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = @" Data Source= 103.27.60.66; Initial Catalog= dealassi_dealassist; User ID = dealassist; Password = 12345";
+            conn.Open();
+            //Ten san pham
+            string get_name_tocomparecmd = "SELECT TenSP FROM BangSP";
+            SqlCommand get_name_tocompare = new SqlCommand(get_name_tocomparecmd, conn);
+            SqlDataReader reader = get_name_tocompare.ExecuteReader();
+            List<String> name = new List<string>();
+            while (reader.Read())
+            {
+                name.Add(reader.GetString(0));
+            }
+            reader.Close();
+            //Ma san pham
+            string get_id_tocomparecmd = "SELECT MaSP FROM BangSP";
+            SqlCommand get_id_tocompare = new SqlCommand(get_id_tocomparecmd, conn);
+            SqlDataReader reader1 = get_id_tocompare.ExecuteReader();
+            List<String> id = new List<string>();
+            while (reader1.Read())
+            {
+                id.Add(reader1.GetString(0));
+            }
+            reader1.Close();
+            //Noi ban
+            string get_source_tocomparecmd = "SELECT NoiBan FROM BangSP";
+            SqlCommand get_source_tocompare = new SqlCommand(get_source_tocomparecmd, conn);
+            SqlDataReader reader2 = get_source_tocompare.ExecuteReader();
+            List<String> source = new List<string>();
+            while (reader2.Read())
+            {
+                source.Add(reader2.GetString(0));
+            }
+            reader2.Close();
+            //Ma nha cung cap
+            string get_supplier_tocomparecmd = "SELECT MaNCC FROM BangSP";
+            SqlCommand get_supplier_tocompare = new SqlCommand(get_supplier_tocomparecmd, conn);
+            SqlDataReader reader3 = get_supplier_tocompare.ExecuteReader();
+            List<String> supplier = new List<string>();
+            while (reader3.Read())
+            {
+                supplier.Add(reader3.GetString(0));
+            }
+            reader3.Close();
+            //Dia chi website
+            string get_link_tocomparecmd = "SELECT DiaChiWebSite FROM BangSP";
+            SqlCommand get_link_tocompare = new SqlCommand(get_link_tocomparecmd, conn);
+            SqlDataReader reader4 = get_link_tocompare.ExecuteReader();
+            List<String> link = new List<string>();
+            while (reader4.Read())
+            {
+                link.Add(reader4.GetString(0));
+            }
+            reader4.Close();
+            //Gia
+            string get_price_tocomparecmd = "SELECT GiaHienThi FROM BangSP";
+            SqlCommand get_price_tocompare = new SqlCommand(get_price_tocomparecmd, conn);
+            SqlDataReader reader5 = get_price_tocompare.ExecuteReader();
+            List<String> price = new List<String>();
+            while (reader5.Read())
+            {
+                price.Add(reader5.GetString(0));
+            }
+
+            List<String> MaSP = new List<String>();
+            List<String> NoiBan = new List<String>();
+            List<String> MaNCC = new List<String>();
+            List<String> Website = new List<String>();
+            List<String> Gia = new List<String>();
+
+            for (int i = 0; i < name.Count; i++)
+            {
+                if (name[i] == product_name)
+                {
+                    MaSP.Add(id[i]);
+                    NoiBan.Add(source[i]);
+                    MaNCC.Add(supplier[i]);
+                    Website.Add(link[i]);
+                    Gia.Add(price[i]);
+                }
+            }
             model.getdata();
             model1.getdata();
-            ViewBag.anh = model.urlimage[index];
-            ViewBag.ten = model.sanpham[index];
-            ViewBag.gia = model1.gia;
-            ViewBag.noiban = model1.noiban;
-            ViewBag.nhacungcap = model1.nhacungcap;
+
+            ViewBag.anh = model.urlimage[0];
+            ViewBag.ten = product_name;
+
+            ViewBag.gia = Gia;
+            ViewBag.noiban = NoiBan;
+            ViewBag.website = Website;
+            ViewBag.mancc = MaNCC;
             ViewBag.style = "~/Styles/StyleProductTable.css";
             return View();
         }

@@ -42,7 +42,7 @@
                     for (int i = 0; i < ViewBag.sanpham.Count && i < 4; i++)
                     {
                         <li class="datali">
-                            <a style="text-decoration:none;" href="@Url.Action("Product_table","HomePage", new {index = i})">
+                            <a style="text-decoration:none;" href="@Url.Action("Product_table","HomePage", new {product_name = ViewBag.sanpham[i]})">
                                 <img class="liimg" src="~/@ViewBag.urlimgage[i]" />
                                 <text style="text-decoration:none;">@ViewBag.sanpham[i]</text>
                             </a>

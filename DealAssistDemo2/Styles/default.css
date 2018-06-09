@@ -72,7 +72,17 @@ body {
     border-width: 3px;
     border-color: #3498db;
 }
-
+.searchbutton {
+    height: 4.5vh;
+    width: 4.5vh;
+    background-color: lightskyblue;
+    background-image: url(search.png);
+    background-position: center;
+    background-size: 3vh;
+    background-repeat: no-repeat;
+    border: 0px;
+    outline: none;
+}
     .search:active, #search:active {
         border: 0px;
         outline: none;
