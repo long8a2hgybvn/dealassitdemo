@@ -59,22 +59,14 @@
                 if (i == 6)
                 {
                     <br />
-                    <div class="datacontainer">
-                        <a href="@Url.Action("ProductPage","HomePage")">
-                            <img class="imgca" src="~/@listimg[i]" /><br />
-                            <text class="titleca">@list[i]</text>
-                        </a>
-                    </div>
+
                 }
-                else
-                {
-                    <div class="datacontainer">
-                        <a href="">
-                            <img class="imgca" src="~/@listimg[i]" /><br />
-                            <text class="titleca">@list[i]</text>
-                        </a>
-                    </div>
-                }
+                <div class="datacontainer">
+                    <a href="@Url.Action("getProduct","HomePage", new { input = list[i] })">
+                        <img class="imgca" src="~/@listimg[i]" /><br />
+                        <text class="titleca">@list[i]</text>
+                    </a>
+                </div>
             }
         }
     </div>

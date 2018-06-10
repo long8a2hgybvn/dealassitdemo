@@ -234,6 +234,9 @@
     <Content Include="Views\HomePage\Product_Details.cshtml" />
     <Content Include="Views\HomePage\Product_table.cshtml" />
     <Content Include="Views\HomePage\ProductPage.cshtml" />
+    <Content Include="Views\HomePage\showdataproduct.cshtml" />
+    <Content Include="Views\HomePage\showCataProduct.cshtml" />
+    <Content Include="Views\HomePage\test.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

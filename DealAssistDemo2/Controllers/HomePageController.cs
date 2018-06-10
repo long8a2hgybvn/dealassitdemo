@@ -6,11 +6,36 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Services.Description;
 
 namespace DealAssistDemo2.Controllers
 {
     public class HomePageController : Controller
     {
+        List<string> tensanpham = new List<string>();
+        public ActionResult showdataproduct(string input)
+        {
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = @" Data Source= 103.27.60.66; Initial Catalog= dealassi_dealassist; User ID = dealassist; Password = 12345";
+            conn.Open();
+            SqlCommand getdata = new SqlCommand("SELECT TenSP From BangSP WHERE Muc='" + input + "'");
+            SqlDataReader reader = getdata.ExecuteReader();
+            while (reader.Read())
+            {
+                tensanpham.Add(reader.GetString(0));
+            }
+            conn.Close();
+            ViewBag.tensanpham = tensanpham;
+            result = tensanpham;
+            return RedirectToAction("showCataProduct");
+        }
+        public ActionResult showCataProduct()
+        {
+            //ViewBag.product = tensanpham.Distinct().ToList<string>();
+            //ViewBag.urlimage = urlimg;
+            ViewBag.style = "~/Styles/viewProductStyle.css";
+            return View();
+        }
         public BuyLocation model1 = new BuyLocation();
         public List<string> nonfavlist = new List<string>();
         public List<string> nonfavlistimg = new List<string>();
@@ -26,7 +51,7 @@ namespace DealAssistDemo2.Controllers
             var fav = new fav();
             for (int i = 0; i < fav.catalist.Count; i++)
             {
-                if (favlist == null||favlist.ToString().Contains(fav.catalist[i]) == false )
+                if (favlist == null || favlist.ToString().Contains(fav.catalist[i]) == false)
                 {
                     nonfavlistimg.Add(fav.cataimg[i]);
                     nonfavlist.Add(fav.catalist[i]);
@@ -46,7 +71,7 @@ namespace DealAssistDemo2.Controllers
             conn.Open();
             SqlCommand getfavlist1 = new SqlCommand("SELECT SoThich From dbo.BangNgDung Where ID='" + Request.Cookies["tendangnhap"].Value.ToString() + "'", conn);
             var favlist = getfavlist1.ExecuteScalar();
-            SqlCommand replace = new SqlCommand("UPDATE dbo.BangNgDung SET SoThich=N'" + favlist+ " " + choosen + "' WHERE ID='" + Request.Cookies["tendangnhap"].Value.ToString() + "'", conn);
+            SqlCommand replace = new SqlCommand("UPDATE dbo.BangNgDung SET SoThich=N'" + favlist + " " + choosen + "' WHERE ID='" + Request.Cookies["tendangnhap"].Value.ToString() + "'", conn);
             replace.ExecuteNonQuery();
             conn.Close();
             getfavlist();
@@ -83,14 +108,22 @@ namespace DealAssistDemo2.Controllers
             string getfavoriteproductscmd = "SELECT TenSP FROM SPTheoDoi";
             SqlCommand getfavoriteproducts = new SqlCommand(getfavoriteproductscmd, conn);
             SqlDataReader reader = getfavoriteproducts.ExecuteReader();
-            List<String> data = new List<string>();
+            List<String> product_name = new List<string>();
             while (reader.Read())
             {
-                data.Add(reader.GetString(0));
+                product_name.Add(reader.GetString(0));
             }
-            List<String> product_name = data.Distinct().ToList();
-            model.getdata();
-            ViewBag.urlimgage = model.urlimage;
+            reader.Close();
+            string getfavoriteproductscmd1 = "SELECT HinhAnh FROM SPTheoDoi";
+            SqlCommand getfavoriteproducts1 = new SqlCommand(getfavoriteproductscmd1, conn);
+            SqlDataReader reader1 = getfavoriteproducts1.ExecuteReader();
+            List<String> urlimage = new List<string>();
+            while (reader1.Read())
+            {
+                urlimage.Add(reader1.GetString(0));
+            }
+
+            ViewBag.urlimgage = urlimage;
             ViewBag.sanpham = product_name;
             ViewBag.style = "~/Styles/styles.css";
             return View();
@@ -119,12 +152,12 @@ namespace DealAssistDemo2.Controllers
                 TempData["loginfailed"] = "Tên đăng nhập hoặc mật khẩu không hợp lệ";
                 return View("Login");
             }
-            if(model.pass == null || model.user == null)
+            if (model.pass == null || model.user == null)
             {
                 TempData["loginfailed"] = "Tên đăng nhập hoặc mật khẩu không hợp lệ";
                 return View("Login");
             }
-            if(model.pass == checkuserread.ToString())
+            if (model.pass == checkuserread.ToString())
             {
                 Response.Cookies.Add(createusercookie(model.user));
                 ViewBag.style = "~/Styles/styles.css";
@@ -135,7 +168,7 @@ namespace DealAssistDemo2.Controllers
                 TempData["loginfailed"] = "Tên đăng nhập hoặc mật khẩu không hợp lệ";
                 return View("Login");
             }
-            
+
         }
         public ActionResult CatalogueView()
         {
@@ -199,23 +232,23 @@ namespace DealAssistDemo2.Controllers
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = @" Data Source= 103.27.60.66; Initial Catalog= dealassi_dealassist; User ID = dealassist; Password = 12345";
             conn.Open();
-            if (model.checkpass == null || model.email ==null || model.gender == null || model.id == null|| model.name ==null || model.pass == null )
+            if (model.checkpass == null || model.email == null || model.gender == null || model.id == null || model.name == null || model.pass == null)
             {
                 TempData["alertMessage"] = "Vui lòng điền đầy đủ các trường";
                 return View("Signup");
             }
-            if(model.checkpass != model.pass)
+            if (model.checkpass != model.pass)
             {
                 TempData["alertMessage"] = "Nhập lại mật khẩu không khớp";
                 return View("Signup");
             }
-            if(model.pass.Length < 4 || model.pass.Length > 20)
+            if (model.pass.Length < 4 || model.pass.Length > 20)
             {
                 TempData["alertMessage"] = "Password yêu cầu có độ dài lớn hơn 4 và nhỏ hơn 20";
                 return View("Signup");
             }
             string checkusercmd = "SELECT * FROM BangNgDung WHERE 'ID' ='" + model.id + "'";
-            SqlCommand checkuser = new SqlCommand(checkusercmd,conn);
+            SqlCommand checkuser = new SqlCommand(checkusercmd, conn);
             var checkuserread = checkuser.ExecuteScalar();
             if (checkuserread != null)
             {
@@ -225,7 +258,7 @@ namespace DealAssistDemo2.Controllers
             SqlCommand adduser = new SqlCommand("INSERT INTO BangNgDung(ID,Pass,Fullname,Email,Gender) Values ('" + model.id + "','" + model.pass + "',N'" + model.name + "','" + model.email + "',N'" + model.gender + "')", conn);
             // ID -> Pass -> Fullname -> Email -> Gender
             adduser.ExecuteNonQuery();
-            
+
             getfavlist();
             ViewBag.nonfavlist = nonfavlist;
             ViewBag.nonfavlistimg = nonfavlistimg;
@@ -245,14 +278,22 @@ namespace DealAssistDemo2.Controllers
             string getfavoriteproductscmd = "SELECT TenSP FROM SPTheoDoi";
             SqlCommand getfavoriteproducts = new SqlCommand(getfavoriteproductscmd, conn);
             SqlDataReader reader = getfavoriteproducts.ExecuteReader();
-            List<String> data = new List<string>();
+            List<string> product_name = new List<string>();
             while (reader.Read())
             {
-                data.Add(reader.GetString(0));
+                product_name.Add(reader.GetString(0));
             }
-            List<String> product_name = data.Distinct().ToList();
-            model.getdata();
-            ViewBag.urlimgage = model.urlimage;
+
+            string getfavoriteproductscmd1 = "SELECT HinhAnh FROM SPTheoDoi";
+            SqlCommand getfavoriteproducts1 = new SqlCommand(getfavoriteproductscmd1, conn);
+            SqlDataReader reader1 = getfavoriteproducts1.ExecuteReader();
+            List<String> urlimage = new List<string>();
+            while (reader1.Read())
+            {
+                urlimage.Add(reader1.GetString(0));
+            }
+
+            ViewBag.urlimgage = urlimage;
             ViewBag.sanpham = product_name;
             ViewBag.style = "~/Styles/StyleProductDetails.css";
             return View();
@@ -322,12 +363,24 @@ namespace DealAssistDemo2.Controllers
             {
                 price.Add(reader5.GetString(0));
             }
+            reader5.Close();
+            //Hinh Anh
+            string get_img_tocomparecmd = "SELECT HinhAnh FROM BangSP";
+            SqlCommand get_img_tocompare = new SqlCommand(get_img_tocomparecmd, conn);
+            SqlDataReader reader6 = get_img_tocompare.ExecuteReader();
+            List<String> img = new List<string>();
+            while (reader6.Read())
+            {
+                img.Add(reader6.GetString(0));
+            }
+            reader6.Close();
 
             List<String> MaSP = new List<String>();
             List<String> NoiBan = new List<String>();
             List<String> MaNCC = new List<String>();
             List<String> Website = new List<String>();
             List<String> Gia = new List<String>();
+            List<String> HinhAnh = new List<String>();
 
             for (int i = 0; i < name.Count; i++)
             {
@@ -338,18 +391,20 @@ namespace DealAssistDemo2.Controllers
                     MaNCC.Add(supplier[i]);
                     Website.Add(link[i]);
                     Gia.Add(price[i]);
+                    HinhAnh.Add(img[i]);
                 }
             }
             model.getdata();
             model1.getdata();
 
-            ViewBag.anh = model.urlimage[0];
+            ViewBag.anh = HinhAnh[0];
             ViewBag.ten = product_name;
 
             ViewBag.gia = Gia;
             ViewBag.noiban = NoiBan;
             ViewBag.website = Website;
             ViewBag.mancc = MaNCC;
+            ViewBag.urlimage = HinhAnh;
             ViewBag.style = "~/Styles/StyleProductTable.css";
             return View();
         }
@@ -364,7 +419,7 @@ namespace DealAssistDemo2.Controllers
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = @" Data Source= 103.27.60.66; Initial Catalog= dealassi_dealassist; User ID = dealassist; Password = 12345";
             conn.Open();
-            SqlCommand gettechp = new SqlCommand("SELECT tech FROM BangNgDung WHERE ID='"+ Request.Cookies["tendangnhap"].Value.ToString() + "'",conn);
+            SqlCommand gettechp = new SqlCommand("SELECT tech FROM BangNgDung WHERE ID='" + Request.Cookies["tendangnhap"].Value.ToString() + "'", conn);
             tech = Int32.Parse(gettechp.ExecuteScalar().ToString());
             SqlCommand getfashp = new SqlCommand("SELECT fashion FROM BangNgDung WHERE ID='" + Request.Cookies["tendangnhap"].Value.ToString() + "'", conn);
             fashion = Int32.Parse(getfashp.ExecuteScalar().ToString());
@@ -404,21 +459,29 @@ namespace DealAssistDemo2.Controllers
                     bestcatalog = "trans";
                     break;
             }
-            SqlCommand getlovetag = new SqlCommand("SELECT " +bestcatalog+ " FROM BangNgDung WHERE ID='" + Request.Cookies["tendangnhap"].Value.ToString() + "'", conn);
-            string alltag=  getlovetag.ExecuteScalar().ToString();
+            SqlCommand getlovetag = new SqlCommand("SELECT " + bestcatalog + " FROM BangNgDung WHERE ID='" + Request.Cookies["tendangnhap"].Value.ToString() + "'", conn);
+            string alltag = getlovetag.ExecuteScalar().ToString();
 
         }
-        List<string> result = new List<string>();
-
+        List<String> result = new List<String>();
+        List<String> urlimg = new List<String>();
         public ActionResult ProductPage()
         {
+            ViewBag.urlimage = urlimg;
             ViewBag.result = result;
             ViewBag.style = "~/Styles/viewProductStyle.css";
             return View();
         }
         [HttpPost]
-        public ActionResult getProduct(FormCollection collection)
+        public ActionResult getProduct(FormCollection model)
         {
+            if (ViewBag.input != null)
+            {
+                search laymodel = new search();
+                laymodel.inputstring = ViewBag.input;
+            }
+            string input_string = model["inputstring"];
+            string cataloge = model["danhmuc"];
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = @" Data Source= 103.27.60.66; Initial Catalog= dealassi_dealassist; User ID = dealassist; Password = 12345";
             conn.Open();
@@ -430,18 +493,35 @@ namespace DealAssistDemo2.Controllers
             {
                 product_name.Add(reader.GetString(0));
             }
-            string input_string = collection["inputstring"];
-            for (int i = 0; i < product_name.Count; i++)
+
+            string getfavoriteproductscmd1 = "SELECT Muc FROM BangSP";
+            SqlCommand getfavoriteproducts1 = new SqlCommand(getfavoriteproductscmd1, conn);
+            SqlDataReader reader1 = getfavoriteproducts1.ExecuteReader();
+            List<String> theloai = new List<string>();
+            while (reader1.Read())
             {
-                if (product_name[i].ToLower().Contains(input_string.ToLower()))
-                {
-                    result.Add(product_name[i]);
-                }
+                theloai.Add(reader1.GetString(0));
             }
-            conn.Close();
-            ViewBag.product = result.Distinct().ToList<String>();
-            ViewBag.style = "~/Styles/viewProductStyle.css";
-            return View("ProductPage");
+
+            string getfavoriteproductscmd2 = "SELECT HinhAnh FROM BangSP";
+            SqlCommand getfavoriteproducts2 = new SqlCommand(getfavoriteproductscmd2, conn);
+            SqlDataReader reader2 = getfavoriteproducts2.ExecuteReader();
+
+            while (reader2.Read())
+            {
+                urlimg.Add(reader2.GetString(0));
+                for (int i = 0; i < product_name.Count; i++)
+                {
+                    if (product_name[i].ToLower().Contains(input_string.ToLower()) || theloai[i] == cataloge)
+                    {
+                        result.Add(product_name[i]);
+                    }
+                }
+                conn.Close();
+                ViewBag.product = result.Distinct().ToList<string>();
+                ViewBag.style = "~/Styles/viewProductStyle.css";
+            }
+            return RedirectToAction("ProductPage", "HomePage");
         }
     }
 }
