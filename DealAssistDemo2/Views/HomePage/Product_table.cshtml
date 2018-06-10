@@ -8,14 +8,14 @@
 <table class="table1">
     <td class="block" style="width: 30vw">
         <div style="text-align:center">
-            <img src="~/@ViewBag.anh" style="width:16vw; height: 16vw" />
+            <img src="@ViewBag.anh" style="width:16vw; height: 16vw" />
             <br />
             <text>@ViewBag.ten</text>
         </div>
     </td>
     <td class="block" style="width: 45vw">
         <text>Thông tin cơ bản</text>
-        <a href="@Url.Action("Product_Details","HomePage")" style="color:#0094ff">Xem thêm ></a>
+        <a href="@Url.Action("Product_Details","HomePage", new {urlanh = @ViewBag.anh})" style="color:#0094ff">Xem thêm ></a>
     </td>
 </table>
 

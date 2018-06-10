@@ -1,8 +1,28 @@
 ﻿
 @{
-    ViewBag.Title = "showCataProduct";
+    ViewBag.Title = "ProductPage";
     Layout = "~/Views/Shared/defaultHome.cshtml";
 }
 
-<h2>showCataProduct</h2>
+<div class="big_box">
+    @{
+        if (ViewBag.product == null || ViewBag.product.Count == 0)
+        {
+            <h1><b>Không tìm thấy sản phẩm</b></h1>
+        }
+        else
+        {
+            for (int i = 0; i < ViewBag.product.Count; i++)
+            {
+                <div class="small_box">
+                    <a href="@Url.Action("Product_table", "HomePage", new {product_name = ViewBag.product[i]})">
+                        <img src="@ViewBag.urlimage[i]" style="width:8vw; height:8vw " />
+                        <br />
+                        <text>@ViewBag.product[i]</text>
+                    </a>
+                </div>
+            }
+        }
+    }
+</div>
 

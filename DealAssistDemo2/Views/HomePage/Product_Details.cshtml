@@ -5,7 +5,7 @@
 }
 <div style="width: 12.5vw; display: inline-block"></div>
 <div style="display: inline-block; border:hidden ; background-color: #e6e6e6; padding: 30px 30px; width: 70vw">
-    <img src="~/Assets/Picture/bee.jpg" id="img" />
+    <img src="@ViewBag.anh" id="img" />
     <ul style="display:inline-block; vertical-align: top">
         <li id="li"><h2>Tên sản phẩm</h2></li>
         <li id="li">Danh mục sản phẩm</li>
@@ -25,8 +25,9 @@
                     {
                         <li class="datali">
                             <a style="text-decoration:none;" href="@Url.Action("Product_table","HomePage", new {product_name = ViewBag.sanpham[i]})">
-                                <img class="liimg" src="~/@ViewBag.urlimgage[i]" />
-                                <text style="text-decoration:none;">@ViewBag.sanpham[i]</text>
+                                <img class="liimg" src="@ViewBag.urlimgage[i]" />
+                                <br />
+                                <text style="text-decoration:none">@ViewBag.sanpham[i]</text>
                             </a>
                         </li>
                     }

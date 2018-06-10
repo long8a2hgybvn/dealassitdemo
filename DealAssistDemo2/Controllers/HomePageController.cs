@@ -12,27 +12,36 @@ namespace DealAssistDemo2.Controllers
 {
     public class HomePageController : Controller
     {
+
+        List<string> urlimg = new List<string>();
         List<string> tensanpham = new List<string>();
         public ActionResult showdataproduct(string input)
         {
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = @" Data Source= 103.27.60.66; Initial Catalog= dealassi_dealassist; User ID = dealassist; Password = 12345";
             conn.Open();
-            SqlCommand getdata = new SqlCommand("SELECT TenSP From BangSP WHERE Muc='" + input + "'");
+            SqlCommand getdata = new SqlCommand("SELECT TenSP From BangSP WHERE Muc =N'" + input + "'", conn);
             SqlDataReader reader = getdata.ExecuteReader();
             while (reader.Read())
             {
                 tensanpham.Add(reader.GetString(0));
             }
-            conn.Close();
-            ViewBag.tensanpham = tensanpham;
-            result = tensanpham;
-            return RedirectToAction("showCataProduct");
+            reader.Close();
+            List<string> product = tensanpham.Distinct().ToList<string>();
+            for (int i = 0; i < product.Count; i++)
+            {
+                string getfavoriteproductscmd1 = "SELECT HinhAnh FROM BangSP WHERE TenSP='" + product[i] + "'";
+                SqlCommand getfavoriteproducts1 = new SqlCommand(getfavoriteproductscmd1, conn);
+                urlimg.Add(getfavoriteproducts1.ExecuteScalar().ToString());
+            }
+
+            ViewBag.product = product;
+            ViewBag.urlimage = urlimg;
+            ViewBag.style = "~/Styles/viewProductStyle.css";
+            return View("showCataProduct");
         }
         public ActionResult showCataProduct()
         {
-            //ViewBag.product = tensanpham.Distinct().ToList<string>();
-            //ViewBag.urlimage = urlimg;
             ViewBag.style = "~/Styles/viewProductStyle.css";
             return View();
         }
@@ -114,6 +123,7 @@ namespace DealAssistDemo2.Controllers
                 product_name.Add(reader.GetString(0));
             }
             reader.Close();
+
             string getfavoriteproductscmd1 = "SELECT HinhAnh FROM SPTheoDoi";
             SqlCommand getfavoriteproducts1 = new SqlCommand(getfavoriteproductscmd1, conn);
             SqlDataReader reader1 = getfavoriteproducts1.ExecuteReader();
@@ -122,8 +132,9 @@ namespace DealAssistDemo2.Controllers
             {
                 urlimage.Add(reader1.GetString(0));
             }
+            reader1.Close();
 
-            ViewBag.urlimgage = urlimage;
+            ViewBag.urlimage = urlimage;
             ViewBag.sanpham = product_name;
             ViewBag.style = "~/Styles/styles.css";
             return View();
@@ -270,35 +281,6 @@ namespace DealAssistDemo2.Controllers
         {
             return View();
         }
-        public ActionResult Product_Details()
-        {
-            SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = @" Data Source= 103.27.60.66; Initial Catalog= dealassi_dealassist; User ID = dealassist; Password = 12345";
-            conn.Open();
-            string getfavoriteproductscmd = "SELECT TenSP FROM SPTheoDoi";
-            SqlCommand getfavoriteproducts = new SqlCommand(getfavoriteproductscmd, conn);
-            SqlDataReader reader = getfavoriteproducts.ExecuteReader();
-            List<string> product_name = new List<string>();
-            while (reader.Read())
-            {
-                product_name.Add(reader.GetString(0));
-            }
-
-            string getfavoriteproductscmd1 = "SELECT HinhAnh FROM SPTheoDoi";
-            SqlCommand getfavoriteproducts1 = new SqlCommand(getfavoriteproductscmd1, conn);
-            SqlDataReader reader1 = getfavoriteproducts1.ExecuteReader();
-            List<String> urlimage = new List<string>();
-            while (reader1.Read())
-            {
-                urlimage.Add(reader1.GetString(0));
-            }
-
-            ViewBag.urlimgage = urlimage;
-            ViewBag.sanpham = product_name;
-            ViewBag.style = "~/Styles/StyleProductDetails.css";
-            return View();
-        }
-
         public ActionResult Product_table(string product_name)
         {
             SqlConnection conn = new SqlConnection();
@@ -365,22 +347,15 @@ namespace DealAssistDemo2.Controllers
             }
             reader5.Close();
             //Hinh Anh
-            string get_img_tocomparecmd = "SELECT HinhAnh FROM BangSP";
+            string get_img_tocomparecmd = "SELECT HinhAnh FROM BangSP WHERE TenSp = '" + product_name + "'";
             SqlCommand get_img_tocompare = new SqlCommand(get_img_tocomparecmd, conn);
-            SqlDataReader reader6 = get_img_tocompare.ExecuteReader();
-            List<String> img = new List<string>();
-            while (reader6.Read())
-            {
-                img.Add(reader6.GetString(0));
-            }
-            reader6.Close();
+            string urlanh = get_img_tocompare.ExecuteScalar().ToString();
 
             List<String> MaSP = new List<String>();
             List<String> NoiBan = new List<String>();
             List<String> MaNCC = new List<String>();
             List<String> Website = new List<String>();
             List<String> Gia = new List<String>();
-            List<String> HinhAnh = new List<String>();
 
             for (int i = 0; i < name.Count; i++)
             {
@@ -391,23 +366,53 @@ namespace DealAssistDemo2.Controllers
                     MaNCC.Add(supplier[i]);
                     Website.Add(link[i]);
                     Gia.Add(price[i]);
-                    HinhAnh.Add(img[i]);
                 }
             }
             model.getdata();
             model1.getdata();
 
-            ViewBag.anh = HinhAnh[0];
+            ViewBag.anh = urlanh;
             ViewBag.ten = product_name;
 
             ViewBag.gia = Gia;
             ViewBag.noiban = NoiBan;
             ViewBag.website = Website;
             ViewBag.mancc = MaNCC;
-            ViewBag.urlimage = HinhAnh;
             ViewBag.style = "~/Styles/StyleProductTable.css";
             return View();
         }
+        public ActionResult Product_Details(string urlanh)
+        {
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = @" Data Source= 103.27.60.66; Initial Catalog= dealassi_dealassist; User ID = dealassist; Password = 12345";
+            conn.Open();
+            string getfavoriteproductscmd = "SELECT TenSP FROM BangSP WHERE Muc = N'Điện thoại di động'";
+            SqlCommand getfavoriteproducts = new SqlCommand(getfavoriteproductscmd, conn);
+            SqlDataReader reader = getfavoriteproducts.ExecuteReader();
+            List<string> product_name = new List<string>();
+            while (reader.Read())
+            {
+                product_name.Add(reader.GetString(0));
+            }
+            reader.Close();
+            List<string> product = new List<string>();
+            product = product_name.Distinct().ToList<string>();
+
+            List<String> urlimage = new List<string>();
+            for (int i = 0; i < product.Count; i++)
+            {
+                string getfavoriteproductscmd1 = "SELECT HinhAnh FROM BangSP WHERE TenSP = '" + product[i] + "'";
+                SqlCommand getfavoriteproducts1 = new SqlCommand(getfavoriteproductscmd1, conn);
+                urlimage.Add(getfavoriteproducts1.ExecuteScalar().ToString());
+            }
+
+            ViewBag.anh = urlanh;
+            ViewBag.urlimgage = urlimage;
+            ViewBag.sanpham = product;
+            ViewBag.style = "~/Styles/StyleProductDetails.css";
+            return View();
+        }
+
         public int tech = 0;
         public int fashion = 0;
         public int healthcare = 0;
@@ -463,8 +468,7 @@ namespace DealAssistDemo2.Controllers
             string alltag = getlovetag.ExecuteScalar().ToString();
 
         }
-        List<String> result = new List<String>();
-        List<String> urlimg = new List<String>();
+        List<string> result = new List<string>();
         public ActionResult ProductPage()
         {
             ViewBag.urlimage = urlimg;
